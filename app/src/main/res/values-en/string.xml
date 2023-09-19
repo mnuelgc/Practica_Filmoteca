@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FilmLibrary</string>
+
+    <string name="CreatedBy">Created by Manuel Gómez Cámara</string>
+    <string name="GoWeb">Got to Website</string>
+    <string name="GetSup">Get support</string>
+    <string name="GoBack">Go Back</string>
+    <string name="NotImplemented">Functionality not implemented</string>
+
+</resources>

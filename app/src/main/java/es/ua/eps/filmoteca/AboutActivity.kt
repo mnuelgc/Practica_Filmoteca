@@ -15,18 +15,18 @@ class AboutActivity : AppCompatActivity() {
 
         val buttonWeb = binding.button
         buttonWeb.setOnClickListener {
-            Toast.makeText(this, "Funcionalidad sin implementar", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.NotImplemented, Toast.LENGTH_LONG).show()
         }
 
         val buttonSup = binding.button2
         buttonSup.setOnClickListener {
-            Toast.makeText(this, "Funcionalidad sin implementar", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.NotImplemented, Toast.LENGTH_LONG).show()
         }
 
         val buttonBack = binding.button3
 
         buttonBack.setOnClickListener {
-            Toast.makeText(this, "Funcionalidad sin implementar", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, R.string.NotImplemented, Toast.LENGTH_LONG).show()
         }
     }
 }

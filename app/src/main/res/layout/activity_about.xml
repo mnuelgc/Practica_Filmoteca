@@ -10,7 +10,7 @@
         android:id="@+id/CreatedBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Creada Por: Manuel Gómez Cámara"
+        android:text="@string/CreatedBy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_marginStart="116dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="114dp"
-        android:text="Ir al Sitio Web"
+        android:text="@string/GoWeb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -48,7 +48,7 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="118dp"
-        android:text="Obtener soporte"
+        android:text="@string/GetSup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
@@ -60,7 +60,7 @@
         android:layout_marginStart="117dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="116dp"
-        android:text="Volver"
+        android:text="@string/GoBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />

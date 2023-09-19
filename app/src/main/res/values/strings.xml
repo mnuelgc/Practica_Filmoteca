@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Filmoteca</string>
+
+    <string name="CreatedBy">Creado por Manuel Gómez Cámara</string>
+    <string name="GoWeb">Ir al sitio Web</string>
+    <string name="GetSup">Obtener soporte</string>
+    <string name="GoBack">Volver</string>
+    <string name="NotImplemented">Funcionalidad no implementada</string>
+
 </resources>
