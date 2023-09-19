@@ -1,5 +1,8 @@
 package es.ua.eps.filmoteca
 
+import android.content.Intent
+import android.content.IntentSender
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,20 +16,25 @@ class AboutActivity : AppCompatActivity() {
         val binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val intentWeb = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com"))
         val buttonWeb = binding.button
         buttonWeb.setOnClickListener {
-            Toast.makeText(this, R.string.NotImplemented, Toast.LENGTH_LONG).show()
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intentWeb)
+            }
         }
 
+        val intentMail = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:manuelgc_12@hotmail.com"))
         val buttonSup = binding.button2
         buttonSup.setOnClickListener {
-            Toast.makeText(this, R.string.NotImplemented, Toast.LENGTH_LONG).show()
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intentMail)
+            }
         }
 
         val buttonBack = binding.button3
-
         buttonBack.setOnClickListener {
-            Toast.makeText(this, R.string.NotImplemented, Toast.LENGTH_LONG).show()
+            finish()
         }
     }
 }
