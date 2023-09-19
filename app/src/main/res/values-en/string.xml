@@ -8,4 +8,18 @@
     <string name="GoBack">Go Back</string>
     <string name="NotImplemented">Functionality not implemented</string>
 
+    <string name="SeeAFilm">See A Film</string>
+    <string name="SeeBFilm">See B Film</string>
+    <string name="About">About</string>
+
+    <string name="FilmData">Film\'s Data</string>
+    <string name="RelatedFilms">See Related films</string>
+    <string name="EditFilm">Edit film</string>
+    <string name="BacktoPrincipal">Back to home</string>
+
+
+    <string name="EditingFilm">Editing Film</string>
+    <string name="Save">Save</string>
+    <string name="Cancel">Cancel</string>
+
 </resources>

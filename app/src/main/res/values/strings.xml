@@ -7,4 +7,20 @@
     <string name="GoBack">Volver</string>
     <string name="NotImplemented">Funcionalidad no implementada</string>
 
+    <string name="SeeAFilm">Ver película A</string>
+    <string name="SeeBFilm">Ver película B</string>
+    <string name="About">Acerca de</string>
+
+
+    <string name="FilmData">Datos de la película</string>
+    <string name="RelatedFilms">Ver película relacionada</string>
+    <string name="EditFilm">Editar película</string>
+    <string name="BacktoPrincipal">Volver a la principal</string>
+
+
+    <string name="EditingFilm">Editando Pelicula</string>
+    <string name="Save">Guardar</string>
+    <string name="Cancel">Cancelar</string>
+
+
 </resources>
