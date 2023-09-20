@@ -1,5 +1,6 @@
 package es.ua.eps.filmoteca
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import es.ua.eps.filmoteca.databinding.ActivityFilmEditBinding
 import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 
 class FilmEditActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -18,10 +20,12 @@ class FilmEditActivity : AppCompatActivity() {
         val buttonCancel = binding.cancelButton
 
         buttonSave.setOnClickListener {
+            setResult(Activity.RESULT_OK)
             finish()
         }
 
         buttonCancel.setOnClickListener {
+            setResult(Activity.RESULT_CANCELED)
             finish()
         }
     }
