@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE resources [
+    <!ENTITY spiderman "Spider-man: Across the Spider-Verse">
+    <!ENTITY scarface "Scarface">
+    ]>
+
 <resources>
     <string name="app_name">FilmLibrary</string>
 
@@ -8,12 +13,16 @@
     <string name="GoBack">Go Back</string>
     <string name="NotImplemented">Functionality not implemented</string>
 
-    <string name="SeeAFilm">See A Film</string>
-    <string name="SeeBFilm">See B Film</string>
+
+    <string name="SeeSpiderman">See &spiderman;</string>
+    <string name="SeeScarface">See &scarface;</string>
+    <string name="Spiderman">&spiderman;</string>
+    <string name="Scarface">&scarface;</string>
     <string name="About">About</string>
 
     <string name="FilmData">Film\'s Data</string>
-    <string name="RelatedFilms">See Related films</string>
+    <string name="SeeRelatedFilm">See Related film</string>
+    <string name="RelatedFilm">Related film</string>
     <string name="EditFilm">Edit film</string>
     <string name="BacktoPrincipal">Back to home</string>
 

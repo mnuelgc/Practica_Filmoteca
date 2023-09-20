@@ -3,6 +3,7 @@ package es.ua.eps.filmoteca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.accessibility.AccessibilityViewCommand.SetTextArguments
 import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 
 class FilmListActivity : AppCompatActivity() {
@@ -23,10 +24,14 @@ class FilmListActivity : AppCompatActivity() {
         val intentAbout = Intent(this@FilmListActivity, AboutActivity::class.java)
 
         buttonFilmA.setOnClickListener {
+            val filmTitle = resources.getString(R.string.Spiderman)
+            intentFilmAData.putExtra(FilmDataActivity.EXTRA_FILM_TITLE, filmTitle)
             startActivity(intentFilmAData)
         }
 
         buttonFilmB.setOnClickListener {
+            val filmTitle = resources.getString(R.string.Scarface)
+            intentFilmBData.putExtra(FilmDataActivity.EXTRA_FILM_TITLE, filmTitle)
             startActivity(intentFilmBData)
         }
 
