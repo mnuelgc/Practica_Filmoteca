@@ -20,33 +20,87 @@
         android:scaleType="centerCrop"
         android:layout_alignParentStart="true"
         android:src="@drawable/spiderposter"/>
-
     <TextView
-        android:id="@+id/FilmData"
+        android:id="@+id/filmData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="32dp"
+        android:textStyle="bold"
         android:text="@string/FilmData"
+        android:layout_toEndOf="@id/imgFilm"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/directorLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/Director"
+        android:layout_toEndOf="@id/imgFilm"
+        android:layout_below="@id/filmData"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:id="@+id/directorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/Directorsname"
+        android:layout_toEndOf="@id/imgFilm"
+        android:layout_below="@id/directorLayer"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:id="@+id/yearLayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/Year"
+        android:layout_below="@id/directorName"
+        android:layout_toEndOf="@id/imgFilm"
+        android:layout_alignParentEnd="true" />
+    <TextView
+        android:id="@+id/yearValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/YearsValue"
+        android:layout_below="@id/yearLayer"
+        android:layout_toEndOf="@id/imgFilm"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/annotations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/Annotations"
+        android:layout_below="@id/yearValue"
+        android:layout_toEndOf="@id/imgFilm"
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/relatedButton"
+        android:id="@+id/IMDBButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/RelatedFilm"
+        android:text="@string/SeeIMDB"
+        android:layout_toEndOf="@id/imgFilm"
         android:layout_alignParentEnd="true"
         android:layout_above="@id/editButton"
         android:layout_marginBottom="30dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/FilmData" />
+        android:layout_marginEnd="15dp" />
 
     <Button
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/EditFilm"
+        android:layout_toEndOf="@id/imgFilm"
         android:layout_above="@id/backPrincipalButton"
         android:layout_marginBottom="30dp"
         android:layout_marginEnd="15dp"
@@ -59,6 +113,7 @@
         android:layout_marginBottom="120dp"
         android:layout_marginEnd="15dp"
         android:text="@string/BacktoPrincipal"
+        android:layout_toEndOf="@id/imgFilm"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true" />
 

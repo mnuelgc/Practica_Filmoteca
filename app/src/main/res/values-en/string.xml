@@ -21,7 +21,7 @@
     <string name="About">About</string>
 
     <string name="FilmData">Film\'s Data</string>
-    <string name="SeeRelatedFilm">See Related film</string>
+    <string name="SeeIMDB">See IMDB</string>
     <string name="RelatedFilm">Related film</string>
     <string name="EditFilm">Edit film</string>
     <string name="BacktoPrincipal">Back to home</string>
@@ -32,6 +32,17 @@
     <string name="Cancel">Cancel</string>
 
     <string name="Edited">Edited</string>
+
+    <string name="Director">Director:</string>
+    <string name="Directorsname">Director\'s name</string>
+    <string name="Year">Year:</string>
+    <string name="YearsValue">1994</string>
+
+    <string name="Annotations">Annotations</string>
+
+    <string name="SpidermanAnnotations"> Animation</string>
+    <string name="ScarfaceAnnotations"> Mafia</string>
+
 
 
 </resources>

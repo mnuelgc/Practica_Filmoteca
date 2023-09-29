@@ -23,7 +23,7 @@
     <string name="About">Acerca de</string>
 
     <string name="FilmData">Datos de la película</string>
-    <string name="SeeRelatedFilm">Ver película relacionada</string>
+    <string name="SeeIMDB">Ver IMDB</string>
     <string name="RelatedFilm">Película relacionada</string>
     <string name="EditFilm">Editar película</string>
     <string name="BacktoPrincipal">Volver a la principal</string>
@@ -34,6 +34,16 @@
     <string name="Cancel">Cancelar</string>
 
     <string name="Edited">Editado</string>
+
+    <string name="Director">Director:</string>
+    <string name="Directorsname">Nombre del director</string>
+    <string name="Year">Año:</string>
+    <string name="YearsValue">1994</string>
+
+    <string name="Annotations">Comentarios</string>
+
+    <string name="SpidermanAnnotations"> Animación</string>
+    <string name="ScarfaceAnnotations"> Mafia</string>
 
 
 </resources>
