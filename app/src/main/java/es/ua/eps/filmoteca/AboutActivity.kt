@@ -16,10 +16,11 @@ class AboutActivity : AppCompatActivity() {
         val binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val intentWeb = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com"))
+        val intentWeb = Intent(Intent.ACTION_VIEW,
+            Uri.parse("http://www.ua.es"))
         val buttonWeb = binding.button
         buttonWeb.setOnClickListener {
-            if (intent.resolveActivity(packageManager) != null) {
+            if (intentWeb.resolveActivity(packageManager) != null) {
                 startActivity(intentWeb)
             }
         }
@@ -27,7 +28,7 @@ class AboutActivity : AppCompatActivity() {
         val intentMail = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:manuelgc_12@hotmail.com"))
         val buttonSup = binding.button2
         buttonSup.setOnClickListener {
-            if (intent.resolveActivity(packageManager) != null) {
+            if (intentMail.resolveActivity(packageManager) != null) {
                 startActivity(intentMail)
             }
         }
