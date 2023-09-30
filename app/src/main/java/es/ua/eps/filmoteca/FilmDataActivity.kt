@@ -24,6 +24,7 @@ class FilmDataActivity : AppCompatActivity() {
         val EXTRA_FILM_IMDB = "EXTRA_FILM_IMDB"
         val EXTRA_FILM_IMAGE = "EXTRA_FILM_IMAGE"
         val EXTRA_FILM_ANNOTATIONS = "EXTRA_FILM_ANNOTATIONS"
+        val EXTRA_FILM_GENRE_FORMAT = "EXTRA_FILM_GENRE_FORMAT"
     }
 
     private val startForResult = registerForActivityResult(
@@ -46,9 +47,10 @@ class FilmDataActivity : AppCompatActivity() {
         val image = binding.imgFilm
         val directorName = binding.directorName
         val year = binding.yearValue
-
+        val genreAndFormat = binding.genreFormat
         val annotation = binding.annotations
 
+        genreAndFormat.text = extraIntent?.getStringExtra(EXTRA_FILM_GENRE_FORMAT)
         annotation.text = extraIntent?.getStringExtra(EXTRA_FILM_ANNOTATIONS)
 
         val img = extraIntent.getIntExtra(EXTRA_FILM_IMAGE, R.drawable.ic_launcher_foreground)

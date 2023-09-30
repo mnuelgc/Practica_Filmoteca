@@ -40,10 +40,35 @@
     <string name="Year">Año:</string>
     <string name="YearsValue">1994</string>
 
+    <string name="GenreAndFormat">Genero, Formato </string>
+
     <string name="Annotations">Comentarios</string>
 
     <string name="SpidermanAnnotations"> Animación</string>
     <string name="ScarfaceAnnotations"> Mafia</string>
 
+
+    <!-- Generos -->
+    <!-- *********************** -->
+    <!-- *********************** -->
+
+    <string name="Action"> Acción</string>
+    <string name="Drama"> Drama</string>
+    <string name="Comedy"> Comedia</string>
+    <string name="Horror"> Terror</string>
+    <string name="SciFi"> Sci-Fi</string>
+
+    <!-- *********************** -->
+    <!-- *********************** -->
+
+    <!-- Formats -->
+    <!-- *********************** -->
+
+    <string name="DVD"> DVD</string>
+    <string name="Bluray"> Blu-ray</string>
+    <string name="Digital"> Digital</string>
+
+    <!-- *********************** -->
+    <!-- *********************** -->
 
 </resources>

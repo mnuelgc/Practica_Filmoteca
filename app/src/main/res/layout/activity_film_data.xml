@@ -73,13 +73,25 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
+        android:id="@+id/genreFormat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/GenreAndFormat"
+        android:layout_below="@id/yearValue"
+        android:layout_toEndOf="@id/imgFilm"
+        android:layout_alignParentEnd="true" />
+
+
+    <TextView
         android:id="@+id/annotations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
         android:layout_marginTop="40dp"
         android:text="@string/Annotations"
-        android:layout_below="@id/yearValue"
+        android:layout_below="@id/genreFormat"
         android:layout_toEndOf="@id/imgFilm"
         android:layout_alignParentEnd="true" />
 
