@@ -1,42 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".FilmEditActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/editingFIlm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/EditingFilm"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
 
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="272dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/Save"
-        app:layout_constraintEnd_toStartOf="@+id/cancelButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editingFIlm" />
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:src ="@drawable/spiderposter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Capturar Fotografia"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Seleccionar imagen"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="392dp"
-        android:layout_marginEnd="32dp"
-        android:text="@string/Cancel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/saveButton"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:hint="Título de la película"
+        android:layout_weight="2"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Director"
+        android:layout_weight="2"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Year"
+        android:layout_weight="2"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enlace a IMDB"
+        android:layout_weight="2"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Annotations"
+        android:layout_weight="2"/>
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom ="15dp"         >
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/Cancel"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:text="@string/Save" />
+    </LinearLayout>
+</LinearLayout>
+
+    <!--   <TextView
+           android:id="@+id/editingFIlm"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="68dp"
+           android:layout_marginTop="100dp"
+           android:text="@string/EditingFilm"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
+
+       <Button
+           android:id="@+id/saveButton"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="48dp"
+           android:layout_marginTop="272dp"
+           android:layout_marginEnd="8dp"
+           android:text="@string/Save"
+           app:layout_constraintEnd_toStartOf="@+id/cancelButton"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/editingFIlm" />
+
+       <Button
+           android:id="@+id/cancelButton"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="16dp"
+           android:layout_marginTop="392dp"
+           android:layout_marginEnd="32dp"
+           android:text="@string/Cancel"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toEndOf="@+id/saveButton"
+           app:layout_constraintTop_toTopOf="parent" /> -->
