@@ -73,4 +73,14 @@
     <!-- *********************** -->
     <!-- *********************** -->
 
+    <string name="Genre">Genre</string>
+    <string name="Format">Format</string>
+
+    <string name="TakePhoto">Take Photo</string>
+    <string name="SelectImage">Select Image</string>
+
+    <string name="FilmTitle">Film\'s Title</string>
+    <string name="LinktoIMDB">Link to IMDB</string>
+
+
 </resources>

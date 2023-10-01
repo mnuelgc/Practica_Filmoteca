@@ -44,19 +44,22 @@
 
     <string name="Annotations">Comentarios</string>
 
-    <string name="SpidermanAnnotations"> Animación</string>
-    <string name="ScarfaceAnnotations"> Mafia</string>
+    <string name="SpidermanAnnotations">Animación</string>
+    <string name="ScarfaceAnnotations">Mafia</string>
 
 
     <!-- Generos -->
     <!-- *********************** -->
     <!-- *********************** -->
 
-    <string name="Action"> Acción</string>
-    <string name="Drama"> Drama</string>
-    <string name="Comedy"> Comedia</string>
-    <string name="Horror"> Terror</string>
-    <string name="SciFi"> Sci-Fi</string>
+    <string name="Genre">Genero</string>
+    <string name="Format">Format</string>
+
+    <string name="Action">Acción</string>
+    <string name="Drama">Drama</string>
+    <string name="Comedy">Comedia</string>
+    <string name="Horror">Terror</string>
+    <string name="SciFi">Sci-Fi</string>
 
     <!-- *********************** -->
     <!-- *********************** -->
@@ -64,11 +67,32 @@
     <!-- Formats -->
     <!-- *********************** -->
 
-    <string name="DVD"> DVD</string>
-    <string name="Bluray"> Blu-ray</string>
-    <string name="Digital"> Digital</string>
+    <string name="DVD">DVD</string>
+    <string name="Bluray">Blu-ray</string>
+    <string name="Digital">Digital</string>
 
     <!-- *********************** -->
     <!-- *********************** -->
+
+    <string name="TakePhoto">Capturar Fotografía</string>
+    <string name="SelectImage">Seleccionar imagen</string>
+
+    <string name="FilmTitle">Título de la película</string>
+    <string name="LinktoIMDB">Enlace a IMDB</string>
+
+
+    <string-array name="Genres">
+        <item>Acción</item>
+        <item>Drama</item>
+        <item>Comedia</item>
+        <item>Terror</item>
+        <item>Sci-Fi</item>
+    </string-array>
+
+    <string-array name="Formats">
+        <item>DVD</item>
+        <item>Blu-ray</item>
+        <item>Digital</item>
+    </string-array>
 
 </resources>

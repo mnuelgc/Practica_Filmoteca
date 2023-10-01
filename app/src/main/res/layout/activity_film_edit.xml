@@ -7,7 +7,7 @@
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".09">
+        android:layout_weight=".7">
 
         <ImageView
         android:layout_gravity="center_horizontal"
@@ -19,49 +19,60 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Capturar Fotografia"
+            android:text="@string/TakePhoto"
             android:layout_weight="1"/>
         <Button
             android:layout_gravity="center_horizontal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="Seleccionar imagen"
+            android:text="@string/SelectImage"
             android:layout_weight="1"/>
     </LinearLayout>
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Título de la película"/>
+        android:layout_height="0dp"
+        android:hint="@string/FilmTitle"
+        android:layout_weight=".5"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/Director"/>
+        android:layout_height="0dp"
+        android:hint="@string/Director"
+        android:layout_weight=".5"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/Year"/>
+        android:layout_height="0dp"
+        android:hint="@string/Year"
+        android:layout_weight=".5"/>
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enlace a IMDB"/>
+        android:layout_height="0dp"
+        android:hint="@string/LinktoIMDB"
+        android:layout_weight=".5"/>
 
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:prompt="@string/Genre"
+        android:entries="@array/Genres"
+        android:layout_weight=".5" />
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:prompt="@string/Format"
+        android:entries="@array/Formats"
+        android:layout_weight=".5"  />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/Annotations"/>
+        android:layout_height="0dp"
+        android:hint="@string/Annotations"
+        android:layout_weight=".5"/>
 
     <LinearLayout android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".05"    >
+        android:layout_weight=".6"    >
         <Button
             android:id="@+id/cancelButton"
             android:layout_gravity="center_vertical"
@@ -79,37 +90,3 @@
             android:text="@string/Save" />
     </LinearLayout>
 </LinearLayout>
-
-    <!--   <TextView
-           android:id="@+id/editingFIlm"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginStart="68dp"
-           android:layout_marginTop="100dp"
-           android:text="@string/EditingFilm"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toTopOf="parent" />
-
-       <Button
-           android:id="@+id/saveButton"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginStart="48dp"
-           android:layout_marginTop="272dp"
-           android:layout_marginEnd="8dp"
-           android:text="@string/Save"
-           app:layout_constraintEnd_toStartOf="@+id/cancelButton"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/editingFIlm" />
-
-       <Button
-           android:id="@+id/cancelButton"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginStart="16dp"
-           android:layout_marginTop="392dp"
-           android:layout_marginEnd="32dp"
-           android:text="@string/Cancel"
-           app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toEndOf="@+id/saveButton"
-           app:layout_constraintTop_toTopOf="parent" /> -->
