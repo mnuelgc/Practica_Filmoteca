@@ -18,13 +18,13 @@ class FilmDataActivity : AppCompatActivity() {
     private val MOVIE_RESULT = 1
 
     companion object Extra {
-        val EXTRA_FILM_TITLE = "EXTRA_FILM_TITLE"
-        val EXTRA_FILM_DIRECTOR = "EXTRA_FILM_DIRECTOR"
-        val EXTRA_FILM_YEAR = "EXTRA_FILM_YEAR"
-        val EXTRA_FILM_IMDB = "EXTRA_FILM_IMDB"
-        val EXTRA_FILM_IMAGE = "EXTRA_FILM_IMAGE"
-        val EXTRA_FILM_ANNOTATIONS = "EXTRA_FILM_ANNOTATIONS"
-        val EXTRA_FILM_GENRE_FORMAT = "EXTRA_FILM_GENRE_FORMAT"
+        const val EXTRA_FILM_TITLE = "EXTRA_FILM_TITLE"
+        const val EXTRA_FILM_DIRECTOR = "EXTRA_FILM_DIRECTOR"
+        const val EXTRA_FILM_YEAR = "EXTRA_FILM_YEAR"
+        const val EXTRA_FILM_IMDB = "EXTRA_FILM_IMDB"
+        const val EXTRA_FILM_IMAGE = "EXTRA_FILM_IMAGE"
+        const val EXTRA_FILM_ANNOTATIONS = "EXTRA_FILM_ANNOTATIONS"
+        const val EXTRA_FILM_GENRE_FORMAT = "EXTRA_FILM_GENRE_FORMAT"
     }
 
     private val startForResult = registerForActivityResult(
@@ -55,6 +55,7 @@ class FilmDataActivity : AppCompatActivity() {
 
         val img = extraIntent.getIntExtra(EXTRA_FILM_IMAGE, R.drawable.ic_launcher_foreground)
         image.setImageResource(img)
+
         directorName.text = extraIntent?.getStringExtra(EXTRA_FILM_DIRECTOR)
         year.text = extraIntent?.getStringExtra(EXTRA_FILM_YEAR)
 
@@ -78,6 +79,8 @@ class FilmDataActivity : AppCompatActivity() {
         }
 
         buttonEdit.setOnClickListener {
+            intentEdit.putExtra(FilmEditActivity.Extra.EXTRA_FILM_IMAGE, img)
+
             if (Build.VERSION.SDK_INT >= 30)
             {
                 startForResult.launch(intentEdit)
