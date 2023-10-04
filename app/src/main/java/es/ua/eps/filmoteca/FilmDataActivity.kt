@@ -18,13 +18,7 @@ class FilmDataActivity : AppCompatActivity() {
     private val MOVIE_RESULT = 1
 
     companion object Extra {
-        const val EXTRA_FILM_TITLE = "EXTRA_FILM_TITLE"
-        const val EXTRA_FILM_DIRECTOR = "EXTRA_FILM_DIRECTOR"
-        const val EXTRA_FILM_YEAR = "EXTRA_FILM_YEAR"
-        const val EXTRA_FILM_IMDB = "EXTRA_FILM_IMDB"
-        const val EXTRA_FILM_IMAGE = "EXTRA_FILM_IMAGE"
-        const val EXTRA_FILM_ANNOTATIONS = "EXTRA_FILM_ANNOTATIONS"
-        const val EXTRA_FILM_GENRE_FORMAT = "EXTRA_FILM_GENRE_FORMAT"
+        const val EXTRA_FILM_ID  ="EXTRA_FILM_ID"
     }
 
     private val startForResult = registerForActivityResult(
@@ -39,10 +33,13 @@ class FilmDataActivity : AppCompatActivity() {
 
         val extraIntent = intent
 
-        val filmTitle = extraIntent?.getStringExtra(EXTRA_FILM_TITLE)
+        val position  = extraIntent.getIntExtra(EXTRA_FILM_ID, 0)
+        val film : Film = FilmDataSource().films[position]
+
 
         val filmData = binding.filmData
-        filmData.text =filmTitle
+        filmData.text = film.title
+
 
         val image = binding.imgFilm
         val directorName = binding.directorName
@@ -50,14 +47,23 @@ class FilmDataActivity : AppCompatActivity() {
         val genreAndFormat = binding.genreFormat
         val annotation = binding.annotations
 
-        genreAndFormat.text = extraIntent?.getStringExtra(EXTRA_FILM_GENRE_FORMAT)
-        annotation.text = extraIntent?.getStringExtra(EXTRA_FILM_ANNOTATIONS)
+        val genresArr = resources.getStringArray(R.array.Genres)
 
-        val img = extraIntent.getIntExtra(EXTRA_FILM_IMAGE, R.drawable.ic_launcher_foreground)
-        image.setImageResource(img)
+        val posGenre = film.genre as Int
+        val genre = genresArr[posGenre]
 
-        directorName.text = extraIntent?.getStringExtra(EXTRA_FILM_DIRECTOR)
-        year.text = extraIntent?.getStringExtra(EXTRA_FILM_YEAR)
+        val formatArr = resources.getStringArray(R.array.Formats)
+        val posFormat = film.format as Int
+
+        val format = formatArr[posFormat]
+
+        genreAndFormat.text =  "$genre $format"
+        annotation.text = film.comments
+
+        image.setImageResource(film.imagesResId)
+
+        directorName.text = film.director
+        year.text = film.year.toString()
 
         val buttonIMBD = binding.IMDBButton
         val buttonEdit = binding.editButton
@@ -70,7 +76,7 @@ class FilmDataActivity : AppCompatActivity() {
 
         intentBack.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
 
-        val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(extraIntent?.getStringExtra(EXTRA_FILM_IMDB)))
+        val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(film.imdbUrl))
 
         buttonIMBD.setOnClickListener {
             if (viewIntent.resolveActivity(packageManager) != null) {
@@ -79,7 +85,7 @@ class FilmDataActivity : AppCompatActivity() {
         }
 
         buttonEdit.setOnClickListener {
-            intentEdit.putExtra(FilmEditActivity.Extra.EXTRA_FILM_IMAGE, img)
+            intentEdit.putExtra(FilmEditActivity.Extra.EXTRA_FILM_ID, film.imagesResId)
 
             if (Build.VERSION.SDK_INT >= 30)
             {

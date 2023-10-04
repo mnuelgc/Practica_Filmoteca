@@ -14,13 +14,13 @@ class Film {
 
     companion object {
         const val FORMAT_DVD = 0 // Formatos
-        const val FORMAT_BLURAY = 1 // Formatos
-        const val FORMAT_DIGITAL = 2 // Formatos
+        const val FORMAT_BLURAY = 1
+        const val FORMAT_DIGITAL = 2
         const val FORMAT_ACTION = 0 // Generos
-        const val FORMAT_COMEDY = 1 // Formatos
-        const val FORMAT_DRAMA = 2 // Formatos
-        const val FORMAT_SCIFI = 3 // Formatos
-        const val FORMAT_HORROR = 4 // Formatos
+        const val FORMAT_COMEDY = 1
+        const val FORMAT_DRAMA = 2
+        const val FORMAT_SCIFI = 3
+        const val FORMAT_HORROR = 4
 
     }
 }

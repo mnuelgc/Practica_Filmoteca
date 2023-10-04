@@ -10,7 +10,7 @@ import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 class FilmEditActivity : AppCompatActivity() {
 
     companion object Extra {
-        const val EXTRA_FILM_IMAGE = "EXTRA_FILM_IMAGE"
+        const val EXTRA_FILM_ID = "EXTRA_FILM_ID"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,14 +20,16 @@ class FilmEditActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        val extraIntent = intent
+        val position  = extraIntent.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
+        val film : Film = FilmDataSource().films[position]
+
         val buttonSave = binding.saveButton
         val buttonCancel = binding.cancelButton
-        val extraIntent = intent
 
 
         val imgfield = binding.imgfilm
-        val img = extraIntent.getIntExtra(FilmEditActivity.EXTRA_FILM_IMAGE, R.drawable.ic_launcher_foreground)
-        imgfield.setImageResource(img)
+        imgfield.setImageResource(film.imagesResId)
 
 
 

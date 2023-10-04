@@ -3,7 +3,9 @@ package es.ua.eps.filmoteca
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Adapter
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.core.view.accessibility.AccessibilityViewCommand.SetTextArguments
@@ -29,8 +31,17 @@ class FilmListActivity : AppCompatActivity() {
             R.layout.item_film, FilmDataSource().films
         )
 
-
-
         list.adapter = adapter
+
+
+        val intentFilm = Intent(this@FilmListActivity, FilmDataActivity::class.java)
+
+        list.setOnItemClickListener { parent: AdapterView<*>, view: View,
+                                      position: Int, id: Long ->
+
+            intentFilm.putExtra(FilmDataActivity.EXTRA_FILM_ID, position)
+            startActivity(intentFilm)
+
+        }
     }
 }
