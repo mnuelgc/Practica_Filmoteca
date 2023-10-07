@@ -1,6 +1,6 @@
 package es.ua.eps.filmoteca
 
-class FilmDataSource {
+object FilmDataSource {
 
     val films: MutableList<Film> = mutableListOf<Film>()
 

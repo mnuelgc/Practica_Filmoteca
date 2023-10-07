@@ -6,6 +6,8 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.ScriptGroup.Binding
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContract
@@ -14,6 +16,14 @@ import es.ua.eps.filmoteca.databinding.ActivityFilmDataBinding
 import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 
 class FilmDataActivity : AppCompatActivity() {
+
+
+    var filmData: TextView? = null
+    var image: ImageView? = null
+    var directorName: TextView? = null
+    var year: TextView? = null
+    var genreAndFormat: TextView? = null
+    var annotation: TextView? = null
 
     private val MOVIE_RESULT = 1
 
@@ -34,9 +44,9 @@ class FilmDataActivity : AppCompatActivity() {
         val extraIntent = intent
 
         val position  = extraIntent.getIntExtra(EXTRA_FILM_ID, 0)
-        val film : Film = FilmDataSource().films[position]
+        val film : Film = FilmDataSource.films[position]
 
-
+/*
         val filmData = binding.filmData
         filmData.text = film.title
 
@@ -64,10 +74,15 @@ class FilmDataActivity : AppCompatActivity() {
 
         directorName.text = film.director
         year.text = film.year.toString()
+*/
+
+        bindElements(binding)
+        SetFilmData(film)
 
         val buttonIMBD = binding.IMDBButton
         val buttonEdit = binding.editButton
         val buttonBack = binding.backPrincipalButton
+
 
 
 
@@ -76,16 +91,17 @@ class FilmDataActivity : AppCompatActivity() {
 
         intentBack.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
 
-        val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(film.imdbUrl))
 
         buttonIMBD.setOnClickListener {
+            val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(film.imdbUrl))
+
             if (viewIntent.resolveActivity(packageManager) != null) {
                 startActivity(viewIntent)
             }
         }
 
         buttonEdit.setOnClickListener {
-            intentEdit.putExtra(FilmEditActivity.Extra.EXTRA_FILM_ID, film.imagesResId)
+            intentEdit.putExtra(FilmEditActivity.EXTRA_FILM_ID, position)
 
             if (Build.VERSION.SDK_INT >= 30)
             {
@@ -111,9 +127,44 @@ class FilmDataActivity : AppCompatActivity() {
         {
             MOVIE_RESULT -> if (resultCode == Activity.RESULT_OK)
             {
-                val filmData = findViewById<TextView>(R.id.filmData)
-                filmData.text = "${filmData.text} [${resources.getString(R.string.Edited)}]"
+                val extraIntent = intent
+                val position  = extraIntent.getIntExtra(EXTRA_FILM_ID, 0)
+                val film : Film = FilmDataSource.films[position]
+
+                SetFilmData(film)
             }
         }
+    }
+
+    private fun bindElements(binding: ActivityFilmDataBinding)
+    {
+        filmData = binding.filmData
+        image = binding.imgFilm
+        directorName = binding.directorName
+        year = binding.yearValue
+        genreAndFormat = binding.genreFormat
+        annotation = binding.annotations
+    }
+
+    private fun SetFilmData(film: Film)
+    {
+
+        filmData?.text = film.title
+
+        val genresArr = resources.getStringArray(R.array.Genres)
+        val posGenre = film.genre as Int
+        val genre = genresArr!![posGenre!!]
+        val formatArr = resources.getStringArray(R.array.Formats)
+        val posFormat = film.format as Int
+        val format = formatArr[posFormat!!]
+
+        genreAndFormat?.text =  "$genre $format"
+        annotation?.text = film.comments
+
+        image?.setImageResource(film.imagesResId)
+
+        directorName?.text = film.director
+        year?.text = film.year.toString()
+
     }
 }
