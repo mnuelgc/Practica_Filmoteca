@@ -16,12 +16,14 @@
         android:layout_height="50dp"
         android:layout_weight="1"/>
         <Button
+            android:id ="@+id/takePhoto"
             android:layout_gravity="center_vertical"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:text="@string/TakePhoto"
             android:layout_weight="1"/>
         <Button
+            android:id ="@+id/SelectFromGallery"
             android:layout_gravity="center_vertical"
             android:layout_width="0dp"
             android:layout_height="50dp"

@@ -7,6 +7,8 @@ import androidx.core.view.accessibility.AccessibilityViewCommand.SetTextArgument
 import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 
 class FilmListActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
