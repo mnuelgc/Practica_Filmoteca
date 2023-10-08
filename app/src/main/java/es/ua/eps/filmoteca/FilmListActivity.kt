@@ -1,6 +1,11 @@
 package es.ua.eps.filmoteca
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,12 +13,16 @@ import android.widget.Adapter
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.accessibility.AccessibilityViewCommand.SetTextArguments
 import es.ua.eps.filmoteca.databinding.ActivityFilmEditBinding
 import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 
 
 class FilmListActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityFilmListBinding.inflate(layoutInflater)

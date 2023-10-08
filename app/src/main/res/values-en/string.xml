@@ -82,5 +82,12 @@
     <string name="FilmTitle">Film\'s Title</string>
     <string name="LinktoIMDB">Link to IMDB</string>
 
+    <string name="PermissionRequiredExplain">This app requires CAMERA permission to work as expected</string>
+    <string name="PermissionRequest">Permission Request</string>
+    <string name="PermissionRequired">Permission Required</string>
+    <string name="FeatureUnavailable">This feature is unavailable because this feature requires permission that you have denied.
+                        Please allow Camera permission from settings to proceed further</string>
+
+    <string name="Ok">Ok</string>
 
 </resources>
