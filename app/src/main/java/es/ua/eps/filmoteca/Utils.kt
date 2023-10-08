@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 object Utils {
     fun resizePhoto(bitmap: Bitmap): Bitmap {
 
-
         val w = bitmap.width.toFloat()
         val h = bitmap.height.toFloat()
         val aspRat : Float = (h / w)
@@ -14,7 +13,5 @@ object Utils {
         val b = Bitmap.createScaledBitmap(bitmap, W, H, false)
 
         return b
-
-
     }
 }

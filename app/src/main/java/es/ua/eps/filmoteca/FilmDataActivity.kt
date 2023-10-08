@@ -46,36 +46,6 @@ class FilmDataActivity : AppCompatActivity() {
         val position  = extraIntent.getIntExtra(EXTRA_FILM_ID, 0)
         val film : Film = FilmDataSource.films[position]
 
-/*
-        val filmData = binding.filmData
-        filmData.text = film.title
-
-
-        val image = binding.imgFilm
-        val directorName = binding.directorName
-        val year = binding.yearValue
-        val genreAndFormat = binding.genreFormat
-        val annotation = binding.annotations
-
-        val genresArr = resources.getStringArray(R.array.Genres)
-
-        val posGenre = film.genre as Int
-        val genre = genresArr[posGenre]
-
-        val formatArr = resources.getStringArray(R.array.Formats)
-        val posFormat = film.format as Int
-
-        val format = formatArr[posFormat]
-
-        genreAndFormat.text =  "$genre $format"
-        annotation.text = film.comments
-
-        image.setImageResource(film.imagesResId)
-
-        directorName.text = film.director
-        year.text = film.year.toString()
-*/
-
         bindElements(binding)
         SetFilmData(film)
 

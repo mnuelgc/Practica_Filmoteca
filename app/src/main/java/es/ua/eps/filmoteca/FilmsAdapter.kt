@@ -20,8 +20,6 @@ class FilmsAdapter(context: Context?, resource: Int,
           val tvDirector = view.findViewById<TextView>(R.id.director) as TextView
           val tvImage = view.findViewById<TextView>(R.id.itemImg) as ImageView
 
-
-
           getItem(position)?.let{
               tvTitle.text = it.title
               tvDirector.text = it.director

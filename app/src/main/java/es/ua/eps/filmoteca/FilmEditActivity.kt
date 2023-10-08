@@ -29,7 +29,6 @@ class FilmEditActivity : AppCompatActivity() {
 
     companion object Extra {
         const val EXTRA_FILM_ID = "EXTRA_FILM_ID"
-        const val EXTRA_FILM_IMAGE = "EXTRA_FILM_IMAGE"
         val IMAGE_REQUEST_CODE = 100
         val TAKE_IMAGE_REQUEST_CODE = 200
     }
