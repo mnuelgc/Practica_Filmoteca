@@ -161,7 +161,7 @@ class FilmDataActivity : AppCompatActivity() {
         genreAndFormat?.text =  "$genre $format"
         annotation?.text = film.comments
 
-        image?.setImageResource(film.imagesResId)
+        image?.setImageBitmap(film.imageBitmap)
 
         directorName?.text = film.director
         year?.text = film.year.toString()

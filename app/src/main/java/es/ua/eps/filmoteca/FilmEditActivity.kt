@@ -3,32 +3,21 @@ package es.ua.eps.filmoteca
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
-import android.provider.MediaStore.AUTHORITY
-import android.service.autofill.OnClickAction
-import android.view.View.OnClickListener
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
-import androidx.core.content.PackageManagerCompat
 import es.ua.eps.filmoteca.databinding.ActivityFilmEditBinding
-import java.io.File
 
 
 class FilmEditActivity : AppCompatActivity() {
@@ -81,7 +70,7 @@ class FilmEditActivity : AppCompatActivity() {
         val commentsField = binding.filmAnnotation
 
 
-        imgfield?.setImageResource(film.imagesResId)
+        imgfield?.setImageBitmap(film.imageBitmap)
         titleField.setText(FilmDataSource.films[position].title)
         directorField.setText(FilmDataSource.films[position].director)
         yearField.setText(FilmDataSource.films[position].year.toString())
@@ -107,6 +96,8 @@ class FilmEditActivity : AppCompatActivity() {
                 true -> FilmDataSource.films[position].year = 0
                 false -> FilmDataSource.films[position].year = yearField.text.toString().toString().toInt()
             }
+            FilmDataSource.films[position].imageBitmap = (imgfield?.getDrawable() as BitmapDrawable).bitmap
+
             FilmDataSource.films[position].imdbUrl = imdbUrlField.text.toString()
             FilmDataSource.films[position].genre = genreField.selectedItemPosition
             FilmDataSource.films[position].format = formatField.selectedItemPosition
