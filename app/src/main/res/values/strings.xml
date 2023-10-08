@@ -95,4 +95,14 @@
         <item>Digital</item>
     </string-array>
 
+    <string name="PermissionRequiredExplain">Esta app necesita los permisos de CAMARA para funcionar adecuadamanete</string>
+    <string name="PermissionRequest">Solicitud de permisos</string>
+    <string name="PermissionRequired">Permiso requerido</string>
+    <string name="FeatureUnavailable">Esta funcionalidad no está disponeible porque no se han aceptado los permisos necesarios para ello.
+        Por favor vaya a ajuste y acepte los permisos de cámara </string>
+
+    <string name="Ok">Entendido</string>
+    <string name="Cancel">Cancelar</string>
+
+
 </resources>

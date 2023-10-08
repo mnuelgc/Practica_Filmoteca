@@ -1,13 +1,20 @@
 package es.ua.eps.filmoteca
 
+import android.Manifest
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.accessibility.AccessibilityViewCommand.SetTextArguments
 import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 
 class FilmListActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
