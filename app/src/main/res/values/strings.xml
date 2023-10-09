@@ -105,7 +105,11 @@
     <string name="FeatureUnavailable">Esta funcionalidad no está disponeible porque no se han aceptado los permisos necesarios para ello.
         Por favor vaya a ajuste y acepte los permisos de cámara </string>
 
+
+
     <string name="Ok">Entendido</string>
+
+    <string name="AddFilm">Añadir película</string>
 
 
 </resources>

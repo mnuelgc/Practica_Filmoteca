@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     android:name ="Menú">
     <item android:id="@+id/addFilm"
-        android:title ="Añadir película" />
+        android:title ="@string/AddFilm" />
 
     <item android:id="@+id/about"
         android:title ="@string/About" />
