@@ -31,7 +31,8 @@ import es.ua.eps.filmoteca.databinding.ActivityFilmRecylceviewListBinding
 
 class FilmListActivity : AppCompatActivity() {
     var recyclerView: RecyclerView? = null
-    var adapter: RecyclerView.Adapter<*>? = null
+    var adapterRV: RecyclerView.Adapter<*>? = null
+    var adapterFA: FilmsAdapter? = null
     var layoutManager: RecyclerView.LayoutManager? = null
 
     companion object{
@@ -52,12 +53,12 @@ class FilmListActivity : AppCompatActivity() {
                 films.add(film)
             }
 
-            val adapter = FilmsAdapter(
+             adapterFA = FilmsAdapter(
                 this,
                 R.layout.item_film, FilmDataSource.films
             )
 
-            list.adapter = adapter
+            list.adapter = adapterFA
 
             val intentFilm = Intent(this@FilmListActivity, FilmDataActivity::class.java)
 
@@ -80,7 +81,7 @@ class FilmListActivity : AppCompatActivity() {
             val adapter = FilmRecycledViewListAdapter(FilmDataSource.films, this)
 
             recyclerView?.adapter = adapter
-            this.adapter = adapter
+            this.adapterRV = adapter
 
             adapter.setOnItemCLickListener { position ->
                 val intentFilm = Intent(this@FilmListActivity, FilmDataActivity::class.java)
@@ -100,6 +101,14 @@ class FilmListActivity : AppCompatActivity() {
         super.onOptionsItemSelected(item)
 
         when(item.itemId){
+            R.id.addFilm ->{
+                val film = Film()
+                FilmDataSource.films.add(film)
+                adapterFA?.notifyDataSetChanged()
+                adapterRV?.notifyItemChanged(FilmDataSource.films.size-1)
+
+                return true
+            }
             R.id.about ->{
                 val intent = Intent(this@FilmListActivity, AboutActivity::class.java)
                 startActivity(intent)

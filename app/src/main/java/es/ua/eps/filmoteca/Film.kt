@@ -13,17 +13,15 @@ class Film {
     val PREFERRED_IMAGE_SIZE = 400  //400kb
     val ONE_MB_TO_KB = 1024
 
-    var imagesResId = 0 // Propiedades de la clase
-    var title: String? = null
-    var director: String? = null
+    var imagesResId = R.mipmap.ic_launcher // Propiedades de la clase
+    var title: String? = "Pelicula pendiente de introducir información"
+    var director: String? = "Pelicula pendiente de introducir información"
     var year = 0
     var genre = 0
     var format = 0
-    var imdbUrl: String? = null
-    var comments: String? = null
+    var imdbUrl: String? = "http://google.com"
+    var comments: String? = "Pelicula pendiente de introducir información"
     public lateinit var imageBitmap: Bitmap
-
-
 
     override fun toString(): String {
         return title ?: "<Sin titulo>"
