@@ -1,20 +1,38 @@
 package es.ua.eps.filmoteca
 
+import android.app.Activity
 import android.content.Context
+import android.view.ActionMode
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
 class FilmRecycledViewListAdapter(val films : List<Film>, val context: Context) :
     RecyclerView.Adapter<FilmRecycledViewListAdapter.ViewHolder?>(){
 
+
+
+    var actionMode : ActionMode? = null
+
     private var listener : (position: Int) -> Unit = {}
+    private var listenerLong : (position: Int,) -> Unit = {}
     fun setOnItemCLickListener(listener: (position: Int ) -> Unit) {
         this.listener = listener
     }
+
+    fun setOnItemLongCLickListener(listener: (position: Int ) -> Unit) {
+        this.listenerLong = listener
+    }
+
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v : View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_film,parent, false)
@@ -23,6 +41,20 @@ class FilmRecycledViewListAdapter(val films : List<Film>, val context: Context) 
         v.setOnClickListener{
             val position : Int = holder.adapterPosition
             listener(position)
+        }
+
+        v.setOnLongClickListener{
+            if (actionMode != null)
+            {
+                false
+            } else{
+                v.isSelected = true
+                val position: Int = holder.adapterPosition
+
+                listenerLong(position)
+                true
+            }
+
         }
 
         return holder
@@ -39,6 +71,7 @@ class FilmRecycledViewListAdapter(val films : List<Film>, val context: Context) 
         var title: TextView
         var director: TextView
         var poster: ImageView
+
 
 
         fun bind(pos: Int, context: Context) {

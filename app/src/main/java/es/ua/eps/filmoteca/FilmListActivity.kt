@@ -33,6 +33,73 @@ class FilmListActivity : AppCompatActivity() {
         lateinit var res : Resources
     }
 
+    private  val actionModeCallback : ActionMode.Callback = object :ActionMode.Callback{
+        override fun onCreateActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+            val inflater = mode?.menuInflater
+            inflater?.inflate(R.menu.menu_contextual_multiple,menu)
+            val numElement = layoutManager!!.itemCount
+            for (position :Int in 0 ..< numElement) {
+                layoutManager?.getChildAt(position)
+                    ?.findViewById<CheckBox>(R.id.item_check)?.visibility = View.VISIBLE
+            }
+            return  true
+        }
+
+        override fun onPrepareActionMode(mode: ActionMode?, menu: Menu?): Boolean {
+
+            return false
+        }
+        override fun onActionItemClicked(mode: ActionMode?, item: MenuItem): Boolean {
+            return when (item.itemId) {
+                R.id.deleteFilms -> {
+
+                    val listOfIndexToRemove = ArrayList<Int>()
+
+                    for (position: Int in 0..<layoutManager!!.childCount) {
+                        var isChecked = false
+                        isChecked = layoutManager!!.getChildAt(position)!!
+                            .findViewById<CheckBox>(R.id.item_check).isChecked
+
+                        if (isChecked)
+                            listOfIndexToRemove.add(position)
+                    }
+
+                    listOfIndexToRemove.sortDescending()
+
+                    for (position: Int in listOfIndexToRemove) {
+                        val lastPositon = layoutManager!!.childCount - 1
+                        val checkBox = layoutManager!!.getChildAt(position)!!
+                            .findViewById<CheckBox>(R.id.item_check)
+
+                        if (checkBox.isChecked) {
+                            checkBox.isChecked = false
+                            checkBox.visibility = View.INVISIBLE
+                            FilmDataSource.films.removeAt(position)
+                            adapterRV?.notifyItemRemoved(position)
+                        }
+                    }
+                    listOfIndexToRemove.clear()
+                    return true
+                }
+
+                else -> false
+            }
+        }
+
+        override fun onDestroyActionMode(mode: ActionMode?) {
+            (adapterRV as FilmRecycledViewListAdapter).actionMode = null
+
+            val itemsRemain = layoutManager!!.childCount
+
+            for (position : Int in 0..<itemsRemain)
+            {
+                val checkBox = layoutManager!!.getChildAt(position)!!.findViewById<CheckBox>(R.id.item_check)
+                checkBox.isChecked = false
+                checkBox.visibility = View.INVISIBLE
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         res = resources
@@ -49,7 +116,6 @@ class FilmListActivity : AppCompatActivity() {
             for (film: Film in FilmDataSource.films){
                 films.add(film)
             }
-
              adapterFA = FilmsAdapter(
                 this,
                 R.layout.item_film, FilmDataSource.films
@@ -103,7 +169,6 @@ class FilmListActivity : AppCompatActivity() {
                                         checkBox.isChecked = false
                                         lastCheckBox.visibility= View.INVISIBLE
                                         FilmDataSource.films.removeAt(position)
-                                        adapterRV?.notifyItemChanged(position)
                                     }
                                 }
                                 adapterFA?.notifyDataSetChanged()
@@ -171,6 +236,10 @@ class FilmListActivity : AppCompatActivity() {
                 intentFilm.putExtra(FilmDataActivity.EXTRA_FILM_ID, position)
                 startActivity(intentFilm)
             }
+
+            adapter.setOnItemLongCLickListener { position ->
+                (adapterRV as FilmRecycledViewListAdapter)?.actionMode = this@FilmListActivity.startActionMode(actionModeCallback)
+            }
         }
     }
 
@@ -189,7 +258,7 @@ class FilmListActivity : AppCompatActivity() {
                 FilmDataSource.films.add(film)
 
                 adapterFA?.notifyDataSetChanged()
-                adapterRV?.notifyItemChanged(FilmDataSource.films.size-1)
+                adapterRV?.notifyItemInserted(FilmDataSource.films.size-1)
 
                 return true
             }

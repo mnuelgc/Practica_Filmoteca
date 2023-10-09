@@ -30,8 +30,6 @@ class FilmsAdapter(context: Context?, resource: Int,
 
               it.convertImageDrawableToBitmap(context)
               tvImage.setImageBitmap(it.imageBitmap)
-              tvCheckBox.isChecked = false
-
           }
           return view
       }
