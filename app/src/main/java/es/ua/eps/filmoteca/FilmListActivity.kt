@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView
@@ -79,5 +80,11 @@ class FilmListActivity : AppCompatActivity() {
                 startActivity(intentFilm)
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.menu_principal,menu)
+        return true
     }
 }
