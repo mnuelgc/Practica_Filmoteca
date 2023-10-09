@@ -2,6 +2,7 @@
 <!DOCTYPE resources [
     <!ENTITY spiderman "Spider-man: Across the Spider-Verse">
     <!ENTITY scarface "Scarface">
+    <!ENTITY backFuture "Back to the Future">
     ]>
 
 <resources>
@@ -16,9 +17,11 @@
 
     <string name="SeeSpiderman">See &spiderman;</string>
     <string name="SeeScarface">See &scarface;</string>
+    <string name="SeeBackFurute">Ver &backFuture;</string>
     <string name="Spiderman">&spiderman;</string>
     <string name="Scarface">&scarface;</string>
     <string name="About">About</string>
+    <string name="Back_to_the_future">&backFuture;</string>
 
     <string name="FilmData">Film\'s Data</string>
     <string name="SeeIMDB">See IMDB</string>
@@ -45,6 +48,7 @@
 
     <string name="SpidermanAnnotations"> Animation</string>
     <string name="ScarfaceAnnotations"> Mafia</string>
+    <string name="Back_to_the_future_annotations">Time Travel</string>
 
 
     <!-- Genres -->

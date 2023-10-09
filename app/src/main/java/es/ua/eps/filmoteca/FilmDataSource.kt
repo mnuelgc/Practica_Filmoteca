@@ -1,15 +1,18 @@
 package es.ua.eps.filmoteca
 
+import android.content.res.Resources
+import android.content.Context
+
 object FilmDataSource {
 
     val films: MutableList<Film> = mutableListOf<Film>()
 
     init {
         var f = Film()
-        f.title = "Regreso al futuro"
+        f.title = FilmListActivity.res.getString(R.string.Back_to_the_future)
         f.director = "Robert Zemeckis"
         f.imagesResId = R.mipmap.ic_launcher
-        f.comments  = ""
+        f.comments  =  FilmListActivity.res.getString(R.string.Back_to_the_future_annotations)
         f.format = Film.Companion.FORMAT_DIGITAL
         f.genre = Film.Companion.FORMAT_SCIFI
         f.imdbUrl  ="http://www.imdb.com/title/tt0088763"
@@ -18,10 +21,10 @@ object FilmDataSource {
         films.add(f)
 
         f = Film()
-        f.title = "Spider-man: Cruzando el Multiverso"
+        f.title =  FilmListActivity.res.getString(R.string.Spiderman)
         f.director = "Joaquim Dos Santos"
         f.imagesResId = R.drawable.spiderposter
-        f.comments  = "Animacion"
+        f.comments  = FilmListActivity.res.getString(R.string.SpidermanAnnotations)
         f.format = Film.Companion.FORMAT_DIGITAL
         f.genre = Film.Companion.FORMAT_ACTION
         f.imdbUrl  ="http://www.imdb.com/title/tt9362722"
@@ -29,10 +32,10 @@ object FilmDataSource {
         films.add(f)
 
         f = Film()
-        f.title = "Scarface"
+        f.title =FilmListActivity.res.getString(R.string.Scarface)
         f.director = "Brian de Palma"
         f.imagesResId = R.drawable.scarface
-        f.comments  = "Mafia"
+        f.comments  =  FilmListActivity.res.getString(R.string.ScarfaceAnnotations)
         f.format = Film.Companion.FORMAT_DVD
         f.genre = Film.Companion.FORMAT_ACTION
         f.imdbUrl  ="http://www.imdb.com/title/tt9362722"
