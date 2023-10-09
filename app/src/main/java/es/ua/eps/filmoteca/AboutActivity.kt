@@ -6,12 +6,16 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.widget.Toast
 import es.ua.eps.filmoteca.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,5 +41,14 @@ class AboutActivity : AppCompatActivity() {
         buttonBack.setOnClickListener {
             finish()
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        if(id == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 }

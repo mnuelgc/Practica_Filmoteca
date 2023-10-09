@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.MenuItem
 import android.widget.ImageView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -47,6 +48,9 @@ class FilmEditActivity : AppCompatActivity() {
         val binding = ActivityFilmEditBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val extraIntent = intent
         val position  = extraIntent.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
@@ -210,5 +214,16 @@ class FilmEditActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this,
                 arrayOf(PERMISSION_USE_CAMERA), PERMISION_CAMERA_REQUEST_CODE )
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        if(id == android.R.id.home) {
+            val intentBack = Intent(this@FilmEditActivity, FilmListActivity::class.java)
+            intentBack.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intentBack)
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 }

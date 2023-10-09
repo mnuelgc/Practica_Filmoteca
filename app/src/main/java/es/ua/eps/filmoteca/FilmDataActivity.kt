@@ -7,8 +7,10 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.renderscript.ScriptGroup.Binding
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
@@ -40,6 +42,10 @@ class FilmDataActivity : AppCompatActivity() {
         val binding = ActivityFilmDataBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val extraIntent = intent
 
@@ -135,6 +141,15 @@ class FilmDataActivity : AppCompatActivity() {
 
         directorName?.text = film.director
         year?.text = film.year.toString()
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        if(id == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
 
     }
 }

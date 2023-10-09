@@ -20,7 +20,7 @@ class Film {
     var genre = 0
     var format = 0
     var imdbUrl: String? = "http://google.com"
-    var comments: String? = "Pelicula pendiente de introducir información"
+    var comments: String? = null
     public lateinit var imageBitmap: Bitmap
 
     override fun toString(): String {
