@@ -2,6 +2,7 @@
 <!DOCTYPE resources [
     <!ENTITY spiderman "Spider-man: Cruzando el Multiverso">
     <!ENTITY scarface "El precio del poder">
+    <!ENTITY backFuture "Regreso al futuro">
     ]>
 
 <resources>
@@ -16,8 +17,10 @@
 
     <string name="SeeSpiderman">Ver &spiderman;</string>
     <string name="SeeScarface">Ver &scarface;</string>
+    <string name="SeeBackFurute">Ver &backFuture;</string>
     <string name="Spiderman">&spiderman;</string>
     <string name="Scarface">&scarface;</string>
+    <string name="Back_to_the_future">&backFuture;</string>
 
 
     <string name="About">Acerca de</string>
@@ -46,6 +49,7 @@
 
     <string name="SpidermanAnnotations">Animación</string>
     <string name="ScarfaceAnnotations">Mafia</string>
+    <string name="Back_to_the_future_annotations">Viaje temporal</string>
 
 
     <!-- Generos -->

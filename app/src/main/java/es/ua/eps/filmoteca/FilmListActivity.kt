@@ -2,9 +2,11 @@ package es.ua.eps.filmoteca
 
 import android.Manifest
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +18,7 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.accessibility.AccessibilityViewCommand.SetTextArguments
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,14 +32,18 @@ class FilmListActivity : AppCompatActivity() {
     var adapter: RecyclerView.Adapter<*>? = null
     var layoutManager: RecyclerView.LayoutManager? = null
 
+    companion object{
+        lateinit var res : Resources
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        res = resources
 
         if (resources.getBoolean(R.bool.ListView) && !resources.getBoolean(R.bool.RecycledView)) {
             val binding = ActivityFilmListBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
-            val res = resources
             val list = binding.list
             val films = mutableListOf<Film>()
             for (film: Film in FilmDataSource.films){
