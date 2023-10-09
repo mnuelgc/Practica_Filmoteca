@@ -11,6 +11,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView
@@ -93,5 +94,19 @@ class FilmListActivity : AppCompatActivity() {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.menu_principal,menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+
+        when(item.itemId){
+            R.id.about ->{
+                val intent = Intent(this@FilmListActivity, AboutActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+
+        return false
     }
 }
