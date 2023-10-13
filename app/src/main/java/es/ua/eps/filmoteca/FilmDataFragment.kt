@@ -32,6 +32,7 @@ class FilmDataFragment : Fragment() {
     var annotation: TextView? = null
 
     // TODO: Rename and change types of parameters
+    private var positionFilm : Int? = null
     private var param1: String? = null
     private var param2: String? = null
 
@@ -39,6 +40,7 @@ class FilmDataFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            positionFilm = it.getInt(PARAM_POSICION)
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
@@ -67,10 +69,16 @@ class FilmDataFragment : Fragment() {
         val extraIntent = activity?.intent
 
         //val position  = extraIntent?.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
-        val position : Int = 1
-        val film : Film = Film(cont)
+        var film : Film
 
+        bindElements(binding)
+        if(positionFilm!= null) {
 
+            film = FilmDataSource.films[positionFilm!!]
+        }else
+        {
+            film = Film(cont)
+        }
 
         /*    val f = Film()
             f.title = res.getString(R.string.Scarface)
@@ -143,6 +151,8 @@ class FilmDataFragment : Fragment() {
         // TODO: Rename and change types and number of parameters
         lateinit var res : Resources
         lateinit var cont : Context
+        const val PARAM_POSICION = "PARAM_POSICION"
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             FilmDataFragment().apply {
@@ -182,5 +192,13 @@ class FilmDataFragment : Fragment() {
         directorName?.text = film.director
         year?.text = film.year.toString()
 
+    }
+
+
+    public fun setDetalleItem(position : Int)
+    {
+        val film : Film = FilmDataSource.films[position]
+
+        SetFilmData(film)
     }
 }
