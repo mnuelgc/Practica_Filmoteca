@@ -68,7 +68,7 @@ class FilmDataFragment : Fragment() {
 
         //val position  = extraIntent?.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
         val position : Int = 1
-        val film : Film = FilmDataSource.films[position]
+        val film : Film = Film(cont)
 
 
 

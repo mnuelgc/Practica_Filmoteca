@@ -8,14 +8,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import java.io.ByteArrayOutputStream
 
-class Film {
+class Film(context: Context?) {
     private val baos = ByteArrayOutputStream()
     val PREFERRED_IMAGE_SIZE = 400  //400kb
     val ONE_MB_TO_KB = 1024
 
     var imagesResId = R.mipmap.ic_launcher // Propiedades de la clase
-    var title: String? = "Pelicula pendiente de introducir información"
-    var director: String? = "Pelicula pendiente de introducir información"
+    var title: String? = ""
+    var director: String? = ""
     var year = 0
     var genre = 0
     var format = 0
@@ -23,6 +23,11 @@ class Film {
     var comments: String? = null
     public lateinit var imageBitmap: Bitmap
 
+    init{
+        if(context != null){
+            convertImageDrawableToBitmap(context)
+        }
+    }
     override fun toString(): String {
         return title ?: "<Sin titulo>"
     } //Al convertir a cadena mostramos su título

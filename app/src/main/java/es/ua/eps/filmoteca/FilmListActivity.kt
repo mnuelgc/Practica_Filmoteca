@@ -254,7 +254,7 @@ class FilmListActivity : AppCompatActivity() {
 
         when(item.itemId){
             R.id.addFilm ->{
-                val film = Film()
+                val film = Film(null)
                 FilmDataSource.films.add(film)
 
                 adapterFA?.notifyDataSetChanged()
