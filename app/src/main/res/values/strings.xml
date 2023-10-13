@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE resources [
-    <!ENTITY spiderman "Spider-man: Cruzando el Multiverso">
-    <!ENTITY scarface "El precio del poder">
-    <!ENTITY backFuture "Regreso al futuro">
-    ]>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY spiderman "Spider-man: Cruzando el Multiverso"><!ENTITY scarface "El precio del poder"><!ENTITY backFuture "Regreso al futuro">]>
 
 <resources>
     <string name="app_name">Filmoteca</string>
@@ -106,10 +101,11 @@
         Por favor vaya a ajuste y acepte los permisos de cámara </string>
 
 
-
     <string name="Ok">Entendido</string>
 
     <string name="AddFilm">Añadir película</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -9,37 +9,42 @@ object FilmDataSource {
 
     init {
         var f = Film()
-        f.title = FilmListActivity.res.getString(R.string.Back_to_the_future)
+        f.title = FilmDataFragment.res.getString(R.string.Back_to_the_future)
         f.director = "Robert Zemeckis"
         f.imagesResId = R.mipmap.ic_launcher
-        f.comments  =  FilmListActivity.res.getString(R.string.Back_to_the_future_annotations)
+        f.comments  =  FilmDataFragment.res.getString(R.string.Back_to_the_future_annotations)
         f.format = Film.Companion.FORMAT_DIGITAL
         f.genre = Film.Companion.FORMAT_SCIFI
         f.imdbUrl  ="http://www.imdb.com/title/tt0088763"
         f.year = 1985
+        f.convertImageDrawableToBitmap(FilmDataFragment.cont)
 
         films.add(f)
 
         f = Film()
-        f.title =  FilmListActivity.res.getString(R.string.Spiderman)
+        f.title =  FilmDataFragment.res.getString(R.string.Spiderman)
         f.director = "Joaquim Dos Santos"
         f.imagesResId = R.drawable.spiderposter
-        f.comments  = FilmListActivity.res.getString(R.string.SpidermanAnnotations)
+        f.comments  = FilmDataFragment.res.getString(R.string.SpidermanAnnotations)
         f.format = Film.Companion.FORMAT_DIGITAL
         f.genre = Film.Companion.FORMAT_ACTION
         f.imdbUrl  ="http://www.imdb.com/title/tt9362722"
         f.year = 2023
+        f.convertImageDrawableToBitmap(FilmDataFragment.cont)
+
         films.add(f)
 
         f = Film()
-        f.title =FilmListActivity.res.getString(R.string.Scarface)
+        f.title =FilmDataFragment.res.getString(R.string.Scarface)
         f.director = "Brian de Palma"
         f.imagesResId = R.drawable.scarface
-        f.comments  =  FilmListActivity.res.getString(R.string.ScarfaceAnnotations)
+        f.comments  =  FilmDataFragment.res.getString(R.string.ScarfaceAnnotations)
         f.format = Film.Companion.FORMAT_DVD
         f.genre = Film.Companion.FORMAT_ACTION
         f.imdbUrl  ="http://www.imdb.com/title/tt9362722"
         f.year = 1983
+        f.convertImageDrawableToBitmap(FilmDataFragment.cont)
+
         films.add(f)
 
     }
