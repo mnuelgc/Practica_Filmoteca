@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity(), FilmListFragment.OnItemSelectedListene
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if (savedInstanceState != null) return
+
         // Comprueba si estamos usando el layout dinámico
         if (findViewById<View?>(R.id.fragment_container) != null) {
             // Si se está restaurando, no hace falta cargar el fragmento

@@ -1,14 +1,22 @@
 package es.ua.eps.filmoteca
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import es.ua.eps.filmoteca.databinding.FragmentFilmDataBinding
 
 
@@ -24,6 +32,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FilmDataFragment : Fragment() {
 
+    var positionFilm : Int? = null
     var filmData: TextView? = null
     var image: ImageView? = null
     var directorName: TextView? = null
@@ -31,8 +40,15 @@ class FilmDataFragment : Fragment() {
     var genreAndFormat: TextView? = null
     var annotation: TextView? = null
 
+    private val MOVIE_RESULT = 1
+
+
+
+    private val startForResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) {
+            result : ActivityResult -> onActivityResult(MOVIE_RESULT, result.resultCode, result.data)}
+
     // TODO: Rename and change types of parameters
-    private var positionFilm : Int? = null
     private var param1: String? = null
     private var param2: String? = null
 
@@ -47,6 +63,15 @@ class FilmDataFragment : Fragment() {
         res = resources
         cont = requireContext()
 
+        this.setHasOptionsMenu(true); //setHasOptionMenu(true) was not working
+
+        val actionBar: ActionBar? = (activity as AppCompatActivity?)!!.supportActionBar
+        actionBar?.setHomeButtonEnabled(true)
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
+        if (savedInstanceState != null){
+            positionFilm = savedInstanceState.getInt(PARAM_POSICION)
+        }
 
     }
 
@@ -80,46 +105,33 @@ class FilmDataFragment : Fragment() {
             film = Film(cont)
         }
 
-        /*    val f = Film()
-            f.title = res.getString(R.string.Scarface)
-            f.director = "Brian de Palma"
-            f.imagesResId = R.drawable.scarface
-            f.comments  =  res.getString(R.string.ScarfaceAnnotations)
-            f.format = Film.Companion.FORMAT_DVD
-            f.genre = Film.Companion.FORMAT_ACTION
-            f.imdbUrl  ="http://www.imdb.com/title/tt9362722"
-            f.year = 1983
-            f.convertImageDrawableToBitmap(requireContext())
-            // FilmDataSource.films.add(f)
-    */
-
         bindElements(binding)
         SetFilmData(film)
 
         val buttonIMBD = binding.IMDBButton
         val buttonEdit = binding.editButton
-        val buttonBack = binding.backPrincipalButton
+       // val buttonBack = binding.backPrincipalButton
 
 
 
-        /*
-                val intentEdit = Intent(this@FilmDataActivity, FilmEditActivity::class.java)
-                val intentBack = Intent(this@FilmDataActivity, FilmListActivity::class.java)
+
+                val intentEdit = Intent(activity, FilmEditActivity::class.java)
+        /*        val intentBack = Intent(this@FilmDataActivity, FilmListActivity::class.java)
 
                 intentBack.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         */
 
         buttonIMBD.setOnClickListener {
-            /*        val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(film.imdbUrl))
+                  val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(film.imdbUrl))
 
-                    if (viewIntent.resolveActivity(packageManager) != null) {
+                    if (viewIntent.resolveActivity(activity?.packageManager!!) != null) {
                         startActivity(viewIntent)
                     }
-             */
+
         }
 
         buttonEdit.setOnClickListener {
-            /*       intentEdit.putExtra(FilmEditActivity.EXTRA_FILM_ID, position)
+                  intentEdit.putExtra(EXTRA_FILM_ID, positionFilm)
 
                    if (Build.VERSION.SDK_INT >= 30)
                    {
@@ -130,12 +142,12 @@ class FilmDataFragment : Fragment() {
                        startActivityForResult(intentEdit,MOVIE_RESULT)
                    }
 
-             */
+
         }
 
-        buttonBack.setOnClickListener {
+      /*  buttonBack.setOnClickListener {
             //     startActivity(intentBack)
-        }
+        }*/
         return view
     }
 
@@ -152,6 +164,8 @@ class FilmDataFragment : Fragment() {
         lateinit var res : Resources
         lateinit var cont : Context
         const val PARAM_POSICION = "PARAM_POSICION"
+        const val EXTRA_FILM_ID  ="EXTRA_FILM_ID"
+
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
@@ -197,8 +211,33 @@ class FilmDataFragment : Fragment() {
 
     public fun setDetalleItem(position : Int)
     {
+        positionFilm = position
         val film : Film = FilmDataSource.films[position]
 
         SetFilmData(film)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        if (positionFilm!= null) {
+            outState.putInt(PARAM_POSICION, positionFilm!!)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        @Suppress ("DEPRECATION")
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode)
+        {
+            MOVIE_RESULT -> if (resultCode == Activity.RESULT_OK)
+            {
+                val extraIntent = activity?.intent
+                val position  = extraIntent?.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
+                val film : Film = FilmDataSource.films[position!!]
+
+                SetFilmData(film)
+            }
+        }
     }
 }
