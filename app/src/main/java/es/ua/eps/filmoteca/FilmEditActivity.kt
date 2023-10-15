@@ -18,6 +18,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import es.ua.eps.filmoteca.databinding.ActivityFilmEditBinding
 
 
@@ -108,6 +110,7 @@ class FilmEditActivity : AppCompatActivity() {
 
 
             setResult(Activity.RESULT_OK)
+
             finish()
         }
 

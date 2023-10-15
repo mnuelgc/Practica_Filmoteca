@@ -37,7 +37,10 @@ class MainActivity : AppCompatActivity(), FilmListFragment.OnItemSelectedListene
             .findFragmentById(R.id.film_data_fragment) as FilmDataFragment?
 
         if (dataFragmet != null) {
-            dataFragmet.setFilmItem(position)
+
+            var listFragment = supportFragmentManager
+                .findFragmentById(R.id.films_list_fragment) as FilmListFragment?
+            dataFragmet.setFilmItem(position, listFragment)
         } else {
             dataFragmet = FilmDataFragment()
             val args = Bundle()

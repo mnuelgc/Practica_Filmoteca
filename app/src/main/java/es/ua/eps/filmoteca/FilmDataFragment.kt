@@ -41,7 +41,7 @@ class FilmDataFragment : Fragment() {
     var year: TextView? = null
     var genreAndFormat: TextView? = null
     var annotation: TextView? = null
-
+    var filmListFragment : FilmListFragment? = null
     private val MOVIE_RESULT = 1
 
 
@@ -190,10 +190,10 @@ class FilmDataFragment : Fragment() {
     }
 
 
-    public fun setFilmItem(position: Int) {
+    public fun setFilmItem(position: Int, filmListFragment : FilmListFragment?) {
         positionFilm = position
         val film: Film = FilmDataSource.films[position]
-
+        this.filmListFragment = filmListFragment
         SetFilmData(film)
     }
 
@@ -210,10 +210,8 @@ class FilmDataFragment : Fragment() {
 
         when (requestCode) {
             MOVIE_RESULT -> if (resultCode == Activity.RESULT_OK) {
-                val extraIntent = activity?.intent
-                val position = extraIntent?.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
-                val film: Film = FilmDataSource.films[position!!]
-
+                val film: Film = FilmDataSource.films[positionFilm!!]
+                this.filmListFragment?.adapter?.notifyDataSetChanged()
                 SetFilmData(film)
             }
         }

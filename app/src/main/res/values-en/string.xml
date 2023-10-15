@@ -96,5 +96,9 @@
 
     <string name="AddFilm">Add film</string>
 
+    <string name="FilmDoesntSelect">Película no seleccionada</string>
+    <string name="SelectFilm">Selecciona una película</string>
+
+
 
 </resources>

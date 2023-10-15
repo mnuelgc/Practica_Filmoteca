@@ -1,10 +1,14 @@
 package es.ua.eps.filmoteca
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -28,6 +32,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class FilmListFragment : ListFragment() {
     var callback : OnItemSelectedListener? = null
+    public lateinit var adapter : FilmsAdapter
+
 
     interface OnItemSelectedListener {
         fun onItemSelected(position: Int)
@@ -39,14 +45,13 @@ class FilmListFragment : ListFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
         res = resources
         cont = requireContext()
-
-
     }
 
     override fun onCreateView(
@@ -58,7 +63,7 @@ class FilmListFragment : ListFragment() {
         val list = binding.list
         registerForContextMenu(list)
 
-        val adapter = FilmsAdapter(
+        adapter = FilmsAdapter(
             cont,
             R.layout.item_film, FilmDataSource.films
         )
@@ -106,5 +111,31 @@ class FilmListFragment : ListFragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.menu_principal,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+
+        when(item.itemId){
+            R.id.addFilm ->{
+                val film = Film(null)
+                FilmDataSource.films.add(film)
+
+                adapter.notifyDataSetChanged()
+
+                return true
+            }
+            R.id.about ->{
+                val intent = Intent(activity, AboutActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+
+        return false
     }
 }
