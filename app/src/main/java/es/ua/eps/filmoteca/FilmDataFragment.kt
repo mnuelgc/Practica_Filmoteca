@@ -34,7 +34,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FilmDataFragment : Fragment() {
 
-    var positionFilm : Int? = null
+    var positionFilm: Int? = null
     var filmData: TextView? = null
     var image: ImageView? = null
     var directorName: TextView? = null
@@ -45,10 +45,9 @@ class FilmDataFragment : Fragment() {
     private val MOVIE_RESULT = 1
 
 
-
     private val startForResult = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()) {
-            result : ActivityResult -> onActivityResult(MOVIE_RESULT, result.resultCode, result.data)}
+        ActivityResultContracts.StartActivityForResult()
+    ) { result: ActivityResult -> onActivityResult(MOVIE_RESULT, result.resultCode, result.data) }
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -67,11 +66,12 @@ class FilmDataFragment : Fragment() {
 
         this.setHasOptionsMenu(true); //setHasOptionMenu(true) was not working
 
-        val actionBar: ActionBar? = (activity as AppCompatActivity?)!!.supportActionBar
-        actionBar?.setHomeButtonEnabled(true)
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-
-        if (savedInstanceState != null){
+        if (activity?.findViewById<View?>(R.id.fragment_container) != null) {
+            val actionBar: ActionBar? = (activity as AppCompatActivity?)!!.supportActionBar
+            actionBar?.setHomeButtonEnabled(true)
+            actionBar?.setDisplayHomeAsUpEnabled(true)
+        }
+        if (savedInstanceState != null) {
             positionFilm = savedInstanceState.getInt(PARAM_POSICION)
         }
 
@@ -84,26 +84,18 @@ class FilmDataFragment : Fragment() {
         // Inflate the layout for this fragment
 
 
-
         val binding = FragmentFilmDataBinding.inflate(layoutInflater)
         val view = binding.root
-       // activity?.setContentView(view)
 
-/*
-           supportActionBar?.setHomeButtonEnabled(true)
-           supportActionBar?.setDisplayHomeAsUpEnabled(true)
-*/
         val extraIntent = activity?.intent
 
-        //val position  = extraIntent?.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
-        var film : Film
+        var film: Film
 
         bindElements(binding)
-        if(positionFilm!= null) {
+        if (positionFilm != null) {
 
             film = FilmDataSource.films[positionFilm!!]
-        }else
-        {
+        } else {
             film = Film(cont)
         }
 
@@ -112,44 +104,33 @@ class FilmDataFragment : Fragment() {
 
         val buttonIMBD = binding.IMDBButton
         val buttonEdit = binding.editButton
-       // val buttonBack = binding.backPrincipalButton
 
 
+        val intentEdit = Intent(activity, FilmEditActivity::class.java)
 
-
-                val intentEdit = Intent(activity, FilmEditActivity::class.java)
-        /*        val intentBack = Intent(this@FilmDataActivity, FilmListActivity::class.java)
-
-                intentBack.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        */
 
         buttonIMBD.setOnClickListener {
-                  val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(film.imdbUrl))
+            val viewIntent = Intent(Intent.ACTION_VIEW, Uri.parse(film.imdbUrl))
 
-                    if (viewIntent.resolveActivity(activity?.packageManager!!) != null) {
-                        startActivity(viewIntent)
-                    }
+            if (viewIntent.resolveActivity(activity?.packageManager!!) != null) {
+                startActivity(viewIntent)
+            }
 
         }
 
         buttonEdit.setOnClickListener {
-                  intentEdit.putExtra(EXTRA_FILM_ID, positionFilm)
+            intentEdit.putExtra(EXTRA_FILM_ID, positionFilm)
 
-                   if (Build.VERSION.SDK_INT >= 30)
-                   {
-                       startForResult.launch(intentEdit)
-                   }
-                   else {
-                       @Suppress("DEPRECATION")
-                       startActivityForResult(intentEdit,MOVIE_RESULT)
-                   }
+            if (Build.VERSION.SDK_INT >= 30) {
+                startForResult.launch(intentEdit)
+            } else {
+                @Suppress("DEPRECATION")
+                startActivityForResult(intentEdit, MOVIE_RESULT)
+            }
 
 
         }
 
-      /*  buttonBack.setOnClickListener {
-            //     startActivity(intentBack)
-        }*/
         return view
     }
 
@@ -163,10 +144,10 @@ class FilmDataFragment : Fragment() {
          * @return A new instance of fragment FilmDataFragment.
          */
         // TODO: Rename and change types and number of parameters
-        lateinit var res : Resources
-        lateinit var cont : Context
+        lateinit var res: Resources
+        lateinit var cont: Context
         const val PARAM_POSICION = "PARAM_POSICION"
-        const val EXTRA_FILM_ID  ="EXTRA_FILM_ID"
+        const val EXTRA_FILM_ID = "EXTRA_FILM_ID"
 
 
         @JvmStatic
@@ -179,8 +160,7 @@ class FilmDataFragment : Fragment() {
             }
     }
 
-    private fun bindElements(binding: FragmentFilmDataBinding)
-    {
+    private fun bindElements(binding: FragmentFilmDataBinding) {
         filmData = binding.filmData
         image = binding.imgFilm
         directorName = binding.directorName
@@ -189,8 +169,7 @@ class FilmDataFragment : Fragment() {
         annotation = binding.annotations
     }
 
-    private fun SetFilmData(film: Film)
-    {
+    private fun SetFilmData(film: Film) {
         filmData?.text = film.title
 
         val genresArr = resources.getStringArray(R.array.Genres)
@@ -200,7 +179,7 @@ class FilmDataFragment : Fragment() {
         val posFormat = film.format as Int
         val format = formatArr[posFormat!!]
 
-        genreAndFormat?.text =  "$genre $format"
+        genreAndFormat?.text = "$genre $format"
         annotation?.text = film.comments
 
         image?.setImageBitmap(film.imageBitmap)
@@ -211,32 +190,29 @@ class FilmDataFragment : Fragment() {
     }
 
 
-    public fun setFilmItem(position : Int)
-    {
+    public fun setFilmItem(position: Int) {
         positionFilm = position
-        val film : Film = FilmDataSource.films[position]
+        val film: Film = FilmDataSource.films[position]
 
         SetFilmData(film)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        if (positionFilm!= null) {
+        if (positionFilm != null) {
             outState.putInt(PARAM_POSICION, positionFilm!!)
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        @Suppress ("DEPRECATION")
+        @Suppress("DEPRECATION")
         super.onActivityResult(requestCode, resultCode, data)
 
-        when (requestCode)
-        {
-            MOVIE_RESULT -> if (resultCode == Activity.RESULT_OK)
-            {
+        when (requestCode) {
+            MOVIE_RESULT -> if (resultCode == Activity.RESULT_OK) {
                 val extraIntent = activity?.intent
-                val position  = extraIntent?.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
-                val film : Film = FilmDataSource.films[position!!]
+                val position = extraIntent?.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
+                val film: Film = FilmDataSource.films[position!!]
 
                 SetFilmData(film)
             }
@@ -245,7 +221,10 @@ class FilmDataFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
-        if(id == android.R.id.home) {
+        if (id == android.R.id.home) {
+            val actionBar: ActionBar? = (activity as AppCompatActivity?)!!.supportActionBar
+            actionBar?.setHomeButtonEnabled(false)
+            actionBar?.setDisplayHomeAsUpEnabled(false)
             activity?.supportFragmentManager?.popBackStack()
         }
         return super.onOptionsItemSelected(item)

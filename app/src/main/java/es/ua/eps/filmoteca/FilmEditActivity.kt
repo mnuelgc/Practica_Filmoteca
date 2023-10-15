@@ -219,9 +219,7 @@ class FilmEditActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id: Int = item.itemId
         if(id == android.R.id.home) {
-            val intentBack = Intent(this@FilmEditActivity, FilmListActivity::class.java)
-            intentBack.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intentBack)
+           finish()
         }
         return super.onOptionsItemSelected(item)
 

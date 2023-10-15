@@ -48,17 +48,6 @@ class MainActivity : AppCompatActivity(), FilmListFragment.OnItemSelectedListene
             t.replace(R.id.fragment_container, dataFragmet)
             t.addToBackStack(null)
             t.commit()
-           /*// Tipo dinámico: hacemos transición al nuevo fragmento
-            detalleFragment = DetalleFragment()
-            val args = Bundle()
-            args.putInt(PARAM_POSICION, position)
-            detalleFragment.arguments = args
-
-            val t = fragmentManager.beginTransaction()
-            t.replace(R.id.fragment_container, detalleFragment)
-            t.addToBackStack(null)
-            t.commit()
-            */
         }
     }
 }

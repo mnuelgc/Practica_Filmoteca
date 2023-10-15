@@ -58,11 +58,6 @@ class FilmListFragment : ListFragment() {
         val list = binding.list
         registerForContextMenu(list)
 
-    /*    val films = mutableListOf<Film>()
-        for (film: Film in FilmDataSource.films){
-            films.add(film)
-        }
-*/
         val adapter = FilmsAdapter(
             cont,
             R.layout.item_film, FilmDataSource.films
