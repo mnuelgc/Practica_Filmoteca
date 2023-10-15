@@ -55,7 +55,7 @@ class FilmEditActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val extraIntent = intent
-        val position  = extraIntent.getIntExtra(FilmDataActivity.EXTRA_FILM_ID, 0)
+        val position  = extraIntent.getIntExtra(FilmDataFragment.EXTRA_FILM_ID, 0)
 
         val film : Film = FilmDataSource.films[position]
 

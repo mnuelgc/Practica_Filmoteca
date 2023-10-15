@@ -15,7 +15,6 @@ import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ListView
 import androidx.fragment.app.ListFragment
-import es.ua.eps.filmoteca.databinding.ActivityFilmListBinding
 import es.ua.eps.filmoteca.databinding.FragmentFilmDataBinding
 import es.ua.eps.filmoteca.databinding.FragmentFilmListBinding
 import kotlin.ClassCastException
