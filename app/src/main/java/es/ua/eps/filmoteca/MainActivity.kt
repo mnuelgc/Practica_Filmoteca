@@ -2,7 +2,9 @@ package es.ua.eps.filmoteca
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import es.ua.eps.filmoteca.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), FilmListFragment.OnItemSelectedListener {
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity(), FilmListFragment.OnItemSelectedListene
             .findFragmentById(R.id.film_data_fragment) as FilmDataFragment?
 
         if (dataFragmet != null) {
-            dataFragmet.setDetalleItem(position)
+            dataFragmet.setFilmItem(position)
         } else {
             dataFragmet = FilmDataFragment()
             val args = Bundle()

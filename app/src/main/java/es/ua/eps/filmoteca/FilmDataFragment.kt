@@ -8,10 +8,12 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBar
@@ -209,7 +211,7 @@ class FilmDataFragment : Fragment() {
     }
 
 
-    public fun setDetalleItem(position : Int)
+    public fun setFilmItem(position : Int)
     {
         positionFilm = position
         val film : Film = FilmDataSource.films[position]
@@ -239,5 +241,14 @@ class FilmDataFragment : Fragment() {
                 SetFilmData(film)
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        if(id == android.R.id.home) {
+            activity?.supportFragmentManager?.popBackStack()
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 }
