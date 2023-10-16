@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "es.eps.ua.drawable"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "es.eps.ua.drawable"
