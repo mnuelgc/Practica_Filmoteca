@@ -1,0 +1,10 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- presionado -->
+    <item android:state_pressed="true"
+        android:drawable="@drawable/boton_pressed" />
+    <!-- seleccionado -->
+    <item android:state_focused="true"
+        android:drawable="@drawable/boton_focused" />
+    <!-- normal: no seleccionado ni presionado -->
+    <item android:drawable="@drawable/boton_normal" />
+</selector>
