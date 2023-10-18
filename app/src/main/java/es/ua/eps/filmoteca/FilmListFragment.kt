@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.view.ActionMode
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
@@ -11,8 +12,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.CheckBox
 import android.widget.ListView
 import androidx.fragment.app.ListFragment
 import es.ua.eps.filmoteca.databinding.FragmentFilmDataBinding
@@ -69,6 +72,95 @@ class FilmListFragment : ListFragment() {
 
         list.adapter = adapter
 
+        list.choiceMode = ListView.CHOICE_MODE_MULTIPLE_MODAL
+        //list.setSelector(android.R.color.darker_gray);
+        list.setMultiChoiceModeListener(
+            object : AbsListView.MultiChoiceModeListener {
+                override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
+                    val inflater = mode.menuInflater
+                    inflater.inflate(R.menu.menu_contextual_multiple,menu)
+                    val numElement = list.adapter.count
+                    for (position :Int in 0 ..< numElement) {
+                        list.getChildAt(position)
+                            .findViewById<CheckBox>(R.id.item_check).visibility = View.VISIBLE
+                    }
+                    return true
+                }
+
+                override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
+                    return false
+                }
+
+                override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
+                    return when(item.itemId) {
+                        R.id.deleteFilms ->{
+
+                            val listOfIndexToRemove = ArrayList<Int>()
+
+                            for (position: Int in 0..<list.adapter?.count!! )
+                            {
+                                var isChecked = false
+                                isChecked = list.getChildAt(position).findViewById<CheckBox>(R.id.item_check).isChecked
+
+                                if (isChecked)
+                                    listOfIndexToRemove.add(position)
+                            }
+
+                            listOfIndexToRemove.sortDescending()
+
+                            for (position : Int in listOfIndexToRemove)
+                            {
+                                val lastPositon = list.adapter?.count!! -1
+                                val checkBox = list.getChildAt(position).findViewById<CheckBox>(R.id.item_check)
+                                val lastCheckBox = list.getChildAt(lastPositon).findViewById<CheckBox>(R.id.item_check)
+
+                                if(checkBox.isChecked){
+                                    checkBox.isChecked = false
+                                    lastCheckBox.visibility= View.INVISIBLE
+                                    FilmDataSource.films.removeAt(position)
+                                }
+                            }
+                            (list.adapter as FilmsAdapter)?.notifyDataSetChanged()
+                            if (list.adapter.count<= 0){
+                                AddNewFilmToList()
+                            }
+                            callback?.onItemSelected(0)
+
+                            listOfIndexToRemove.clear()
+                            return true
+                        }
+                        else -> false
+                    }
+                }
+
+                override fun onDestroyActionMode(mode: ActionMode?) {
+                    val itemsRemain = list.adapter?.count
+
+                    for (position : Int in 0..<itemsRemain!!)
+                    {
+                        val checkBox = list.getChildAt(position).findViewById<CheckBox>(R.id.item_check)
+                        checkBox.isChecked = false
+                        checkBox.visibility = View.INVISIBLE
+                    }
+                }
+
+                override fun onItemCheckedStateChanged(
+                    mode: ActionMode?,
+                    position: Int,
+                    id: Long,
+                    checked: Boolean
+                ) {
+
+                    if (checked){
+                        val checkBox = list.getChildAt(position).findViewById<CheckBox>(R.id.item_check)
+
+                        checkBox.isChecked = true
+                        checkBox.visibility = View.VISIBLE
+                    }
+                }
+            }
+        )
+
 
         return binding.root
     }
@@ -121,11 +213,7 @@ class FilmListFragment : ListFragment() {
 
         when(item.itemId){
             R.id.addFilm ->{
-                val film = Film(null)
-                FilmDataSource.films.add(film)
-
-                adapter.notifyDataSetChanged()
-
+                AddNewFilmToList()
                 return true
             }
             R.id.about ->{
@@ -136,5 +224,12 @@ class FilmListFragment : ListFragment() {
         }
 
         return false
+    }
+
+    private fun  AddNewFilmToList()
+    {
+        val film = Film(context)
+        FilmDataSource.films.add(film)
+        adapter.notifyDataSetChanged()
     }
 }
