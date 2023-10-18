@@ -33,13 +33,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="BUTTON"
-        app:backgroundTint="@null"
-        android:layout_marginTop="20dp" />
+        app:backgroundTint="@null" />
     <ProgressBar
+        android:id="@+id/progress_bar"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="50dp"
         app:layout_constraintTop_toBottomOf="@id/button"
         android:indeterminateDrawable="@drawable/count_to_five"/>
 
-
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10000"
+        android:progressDrawable="@drawable/rectangles_level_list"
+        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
