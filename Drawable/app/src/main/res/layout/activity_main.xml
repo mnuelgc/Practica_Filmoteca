@@ -6,50 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textHello"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/round_border_frame"
-        android:text="Hello World!"
-        android:textColor="@color/black"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop
-            ="5dp"
-        app:layout_constraintVertical_bias="0.0" />
     <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/button_drawables"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
         android:background="@drawable/state_list_button"
-        app:layout_constraintTop_toBottomOf="@id/textHello"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="50dp"
-        android:text="BUTTON"
+        android:textSize="25sp"
+        android:text="Drawables"
+        android:textColor="@color/black"
         app:backgroundTint="@null" />
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+
+    <Button
+        android:id="@+id/button_components"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:background="@drawable/state_list_button"
+        app:layout_constraintTop_toBottomOf="@id/button_drawables"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="50dp"
+        android:textSize="20sp"
+        android:text="Personalización de componentes"
+        android:textColor="@color/black"
+        app:backgroundTint="@null" />
 
-        app:layout_constraintTop_toBottomOf="@id/button"
-        android:indeterminateDrawable="@drawable/count_to_five"/>
-
-    <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:max="10000"
-        android:layout_marginTop="25dp"
-
-        android:progressDrawable="@drawable/rectangles_level_list"
-        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
