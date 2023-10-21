@@ -10,17 +10,25 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding : ActivityMainBinding
 
     private lateinit var buttonDrawables : Button
+    private lateinit var buttonComponent : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
         buttonDrawables = viewBinding.buttonDrawables
+        buttonComponent = viewBinding.buttonComponents
 
 
         buttonDrawables.setOnClickListener {
             val intent = Intent(this@MainActivity, DrawableExercicesActivity::class.java)
             startActivity(intent)
         }
+
+        buttonComponent.setOnClickListener {
+            val intent = Intent(this@MainActivity, PersonalizacionComponentesActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
