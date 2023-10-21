@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <level-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:minLevel="0" android:maxLevel="2500" android:drawable="@drawable/boton_normal" />
+    <item android:minLevel="0" android:maxLevel="2500" android:drawable="@drawable/verde_rect" />
     <item android:minLevel="2501" android:maxLevel="5000" android:drawable="@drawable/boton_focused" />
-    <item android:minLevel="5001" android:maxLevel="7500" android:drawable="@drawable/boton_pressed" />
-    <item android:minLevel="7501" android:maxLevel="10000" android:drawable="@drawable/four" />
+    <item android:minLevel="5001" android:maxLevel="7500" android:drawable="@drawable/naranja_rect" />
+    <item android:minLevel="7501" android:maxLevel="10000" android:drawable="@drawable/rojo_rect" />
 </level-list>
 
