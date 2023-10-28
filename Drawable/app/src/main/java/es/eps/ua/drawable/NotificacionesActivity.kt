@@ -1,5 +1,6 @@
 package es.eps.ua.drawable
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
@@ -23,6 +24,7 @@ class NotificacionesActivity : AppCompatActivity() {
     private lateinit var buttonSnackbar : Button
     private lateinit var editTextSnackbar : EditText
     private lateinit var taskList : TextView
+    private lateinit var button_ej3 : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class NotificacionesActivity : AppCompatActivity() {
         buttonSnackbar = viewBinding.buttonSnackBar
         editTextSnackbar = viewBinding.snackBarText
         taskList = viewBinding.taskList
+        button_ej3 = viewBinding.buttonEj3
 
         buttonToast.setOnClickListener{
             LaunchToast()
@@ -44,6 +47,10 @@ class NotificacionesActivity : AppCompatActivity() {
 
         buttonSnackbar.setOnClickListener{
             AddTask(it)
+        }
+        button_ej3.setOnClickListener {
+            val intent = Intent(this@NotificacionesActivity, Ejercicio3Activity::class.java)
+            startActivity(intent)
         }
 
     }
