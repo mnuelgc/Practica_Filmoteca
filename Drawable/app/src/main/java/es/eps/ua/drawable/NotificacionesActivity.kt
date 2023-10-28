@@ -25,6 +25,7 @@ class NotificacionesActivity : AppCompatActivity() {
     private lateinit var editTextSnackbar : EditText
     private lateinit var taskList : TextView
     private lateinit var button_ej3 : Button
+    private lateinit var button_ej4 : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class NotificacionesActivity : AppCompatActivity() {
         editTextSnackbar = viewBinding.snackBarText
         taskList = viewBinding.taskList
         button_ej3 = viewBinding.buttonEj3
+        button_ej4 = viewBinding.buttonEj4
 
         buttonToast.setOnClickListener{
             LaunchToast()
@@ -50,6 +52,11 @@ class NotificacionesActivity : AppCompatActivity() {
         }
         button_ej3.setOnClickListener {
             val intent = Intent(this@NotificacionesActivity, Ejercicio3Activity::class.java)
+            startActivity(intent)
+        }
+
+        button_ej4.setOnClickListener {
+            val intent = Intent(this@NotificacionesActivity, NotificationExercice4::class.java)
             startActivity(intent)
         }
 
