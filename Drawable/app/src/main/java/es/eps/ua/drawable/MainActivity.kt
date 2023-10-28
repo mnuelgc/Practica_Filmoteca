@@ -3,7 +3,9 @@ package es.eps.ua.drawable
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AbsSeekBar
 import android.widget.Button
+import android.widget.SeekBar
 import es.eps.ua.drawable.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
