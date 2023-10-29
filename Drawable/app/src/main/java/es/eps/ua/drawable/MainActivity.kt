@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonDrawables : Button
     private lateinit var buttonComponent : Button
     private lateinit var buttonNotificaciones : Button
+    private lateinit var buttonPantallas : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         buttonDrawables = viewBinding.buttonDrawables
         buttonComponent = viewBinding.buttonComponents
         buttonNotificaciones = viewBinding.buttonNotificaciones
+        buttonPantallas = viewBinding.buttonPantallas
 
         buttonDrawables.setOnClickListener {
             val intent = Intent(this@MainActivity, DrawableExercicesActivity::class.java)
@@ -35,6 +37,11 @@ class MainActivity : AppCompatActivity() {
 
         buttonNotificaciones.setOnClickListener {
             val intent = Intent(this@MainActivity, NotificacionesActivity::class.java)
+            startActivity(intent)
+        }
+
+        buttonPantallas.setOnClickListener {
+            val intent = Intent(this@MainActivity, PantallaActivity::class.java)
             startActivity(intent)
         }
 
