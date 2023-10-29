@@ -36,16 +36,8 @@ class GrafComp : View {
         paintRed.strokeWidth = 5F
         paintRed.color = Color.RED
 
-        val path = Path()
-        path.moveTo(50F, 130F) // Inicio del path
-        path.lineTo(50F, 60F)
-        path.lineTo(30F, 80F)
-
-
         var r = DEFAULT_SIZE.toFloat()
         r =canvas.clipBounds.height().toFloat() /2
-
-
 
         val oval = RectF()
 
