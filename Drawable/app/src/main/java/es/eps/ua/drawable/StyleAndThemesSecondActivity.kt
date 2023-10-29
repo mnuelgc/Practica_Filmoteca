@@ -22,8 +22,7 @@ class StyleAndThemesSecondActivity : AppCompatActivity() {
         buttonBack = viewBinding.buttonStyleAndThemes
 
         buttonBack.setOnClickListener {
-            val intent = Intent(this@StyleAndThemesSecondActivity, StyleAndThemesActivity::class.java)
-            startActivity(intent)
+            finish()
         }
     }
 }
