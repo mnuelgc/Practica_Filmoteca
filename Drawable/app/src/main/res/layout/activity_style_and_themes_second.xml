@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StyleAndThemesSecondActivity">
+
+
+
+    <TextView style ="@style/EstiloTitulo"
+        android:id="@+id/textStyleAndThemesSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Uso de Estilos y Temas"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/nameTextStyleAndThemesSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Aplicación desarrollada por Manuel Gómez Cámara"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/textStyleAndThemesSecond"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button style ="@style/EstiloBoton"
+        android:id="@+id/buttonStyleAndThemes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

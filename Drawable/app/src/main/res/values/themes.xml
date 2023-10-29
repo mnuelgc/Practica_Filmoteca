@@ -5,5 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Drawable" parent="Base.Theme.Drawable" />
+    <style name="Theme.Drawable" parent="Base.Theme.Drawable"/>
+
+    <style name="Theme.DrawableMod" parent="Base.Theme.Drawable">
+        <item name="android:windowBackground" >@color/color_fondo</item>
+        <item name="android:textColorPrimary" >@color/color_texto</item>
+        <item name="android:fontFamily" >serif</item>
+    </style>
 </resources>

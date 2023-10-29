@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="EstiloTitulo" parent="@android:style/TextAppearance.Large" />
+    <style name ="EstiloBoton">
+        <item name="android:drawable">@drawable/fondo_boton</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name= "backgroundTint"> @null</item>
+    </style>
+</resources>

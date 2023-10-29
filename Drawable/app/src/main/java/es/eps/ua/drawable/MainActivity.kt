@@ -3,9 +3,7 @@ package es.eps.ua.drawable
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AbsSeekBar
 import android.widget.Button
-import android.widget.SeekBar
 import es.eps.ua.drawable.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonComponent : Button
     private lateinit var buttonNotificaciones : Button
     private lateinit var buttonPantallas : Button
+    private lateinit var buttonStyles : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         buttonComponent = viewBinding.buttonComponents
         buttonNotificaciones = viewBinding.buttonNotificaciones
         buttonPantallas = viewBinding.buttonPantallas
+        buttonStyles = viewBinding.buttonThemes
 
         buttonDrawables.setOnClickListener {
             val intent = Intent(this@MainActivity, DrawableExercicesActivity::class.java)
@@ -42,6 +43,11 @@ class MainActivity : AppCompatActivity() {
 
         buttonPantallas.setOnClickListener {
             val intent = Intent(this@MainActivity, PantallaActivity::class.java)
+            startActivity(intent)
+        }
+
+        buttonStyles.setOnClickListener {
+            val intent = Intent(this@MainActivity, StyleAndThemesActivity::class.java)
             startActivity(intent)
         }
 
