@@ -47,5 +47,10 @@ class EjemploHilosActivity : AppCompatActivity() {
             val intent = Intent(this@EjemploHilosActivity, HilosThreadActivity::class.java)
             startActivity(intent)
         }
+
+        buttonAsync.setOnClickListener {
+            val intent = Intent(this@EjemploHilosActivity, HilosAsyncTaskActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

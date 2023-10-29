@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HilosThreadActivity">
+    tools:context=".HilosAsyncTaskActivity">
 
     <TextView
-        android:id="@+id/tvCronoTh"
+        android:id="@+id/tvCronoAs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
@@ -22,11 +22,11 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/tvCronoTh"
+        app:layout_constraintTop_toTopOf="@id/tvCronoAs"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button_back_thread"
+        android:id="@+id/button_back_as"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Volver"
