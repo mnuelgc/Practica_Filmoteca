@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Drawable"
         tools:targetApi="31">
         <activity
+            android:name=".HilosCorrutinasActivity"
+            android:exported="false" />
+        <activity
             android:name=".HilosAsyncTaskActivity"
             android:exported="false" />
         <activity
