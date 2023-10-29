@@ -24,6 +24,8 @@ class HilosAsyncTaskActivity : AppCompatActivity() {
         @Deprecated("Deprecated in Java")
         override fun onPreExecute() {
             tvCrono.text = "Contador: 10"
+            buttonInit.isEnabled = false
+
         }
         @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg p0: Void?): Int? {
@@ -43,8 +45,13 @@ class HilosAsyncTaskActivity : AppCompatActivity() {
         @Deprecated("Deprecated in Java")
         override fun onPostExecute(result: Int) {
             tvCrono.text = "Contador terminado"
+            buttonInit.isEnabled = true
         }
 
+        override fun onCancelled() {
+            buttonInit.isEnabled = true
+            super.onCancelled()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

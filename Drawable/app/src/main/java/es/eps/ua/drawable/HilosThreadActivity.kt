@@ -11,26 +11,7 @@ import android.widget.TextView
 import es.eps.ua.drawable.databinding.ActivityHilosThreadBinding
 
 
-class CronoThread(textView: TextView) : Thread(){
-    lateinit var mTextView: TextView
 
-    init {
-        mTextView = textView
-    }
-    override fun run (){
-        var t = 10
-        do {
-            mTextView.post {
-                mTextView.text = "Contador: $t"
-            }
-            Thread.sleep(1000)
-            t--
-        } while (t > 0)
-        mTextView.post {
-            mTextView.text = "Contador terminado"
-        }
-    }
-}
 
 class HilosThreadActivity : AppCompatActivity () {
     private lateinit var viewBinding : ActivityHilosThreadBinding
@@ -39,6 +20,30 @@ class HilosThreadActivity : AppCompatActivity () {
     private lateinit var buttonInit : Button
     private lateinit var buttonBack : Button
 
+    inner class CronoThread() : Thread(){
+
+        override fun run (){
+            var t = 10
+            buttonInit.post{
+              buttonInit.isEnabled = false
+            }
+
+            do {
+                tvCrono.post {
+                    tvCrono.text = "Contador: $t"
+                }
+
+                Thread.sleep(1000)
+                t--
+            } while (t > 0)
+            tvCrono.post {
+                tvCrono.text = "Contador terminado"
+            }
+            buttonInit.post{
+                buttonInit.isEnabled = true
+            }
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityHilosThreadBinding.inflate(layoutInflater)
@@ -50,7 +55,7 @@ class HilosThreadActivity : AppCompatActivity () {
         
         buttonInit.text = "Iniciar Conometro (Threads)"
 
-        val cronoThread = CronoThread(tvCrono)
+        val cronoThread = CronoThread()
         
         buttonInit.setOnClickListener{
            cronoThread.start()

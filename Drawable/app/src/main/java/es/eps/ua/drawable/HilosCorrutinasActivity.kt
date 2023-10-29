@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import es.eps.ua.drawable.databinding.ActivityHilosAsyncTaskBinding
 import es.eps.ua.drawable.databinding.ActivityHilosCorrutinasBinding
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -19,13 +20,8 @@ class HilosCorrutinasActivity : AppCompatActivity() {
 
     private fun cronometra()
     {
-        var t = 10
-        do {
-            tvCrono.text = "Contador: $t"
-            Thread.sleep(1000)
-            t--
-        } while (t > 0)
-        tvCrono.text = "Contador terminado"
+
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,12 +35,23 @@ class HilosCorrutinasActivity : AppCompatActivity() {
 
         buttonInit.text = "Iniciar Conometro (Corrutina)"
 
-
-
         buttonInit.setOnClickListener{
 
+            buttonInit.isEnabled = false
+
             GlobalScope.launch {
-                cronometra()
+                var t = 10
+                do {
+                    launch(Dispatchers.Main) {
+                        tvCrono.text = "Contador: $t"
+                    }
+                    Thread.sleep(1000)
+                    t--
+                } while (t > 0)
+                launch(Dispatchers.Main) {
+                    tvCrono.text = "Contador terminado"
+                    buttonInit.isEnabled = true
+                }
             }
         }
 
