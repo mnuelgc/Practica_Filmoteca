@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonNotificaciones : Button
     private lateinit var buttonPantallas : Button
     private lateinit var buttonStyles : Button
+    private lateinit var buttonThreads : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         buttonNotificaciones = viewBinding.buttonNotificaciones
         buttonPantallas = viewBinding.buttonPantallas
         buttonStyles = viewBinding.buttonThemes
+        buttonThreads = viewBinding.buttonThreads
 
         buttonDrawables.setOnClickListener {
             val intent = Intent(this@MainActivity, DrawableExercicesActivity::class.java)
@@ -51,6 +53,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        buttonThreads.setOnClickListener {
+            val intent = Intent(this@MainActivity, EjemploHilosActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }

@@ -79,6 +79,20 @@
             android:textColor="@color/black"
             app:backgroundTint="@null" />
 
+        <Button
+            android:id="@+id/button_threads"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:background="@drawable/state_list_button"
+            app:layout_constraintTop_toBottomOf="@id/button_themes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            android:textSize="20sp"
+            android:text="Hilos"
+            android:textColor="@color/black"
+            app:backgroundTint="@null" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
