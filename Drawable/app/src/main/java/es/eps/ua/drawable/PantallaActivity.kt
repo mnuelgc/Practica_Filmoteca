@@ -27,5 +27,10 @@ class PantallaActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        buttonExc2.setOnClickListener {
+            val intent = Intent(this@PantallaActivity, PantallaExercice2Activity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
