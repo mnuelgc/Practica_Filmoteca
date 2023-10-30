@@ -43,7 +43,10 @@ class NotificationExercice4 : AppCompatActivity() {
         buttonIniciar = viewBinding.iniciarButton
         buttonDetener = viewBinding.detenerButton
 
-
+        val buttonVolver : Button = viewBinding.buttonBack
+        buttonVolver.setOnClickListener{
+            finish()
+        }
 
         if (ContextCompat.checkSelfPermission(this, permission)
 

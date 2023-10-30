@@ -32,5 +32,10 @@ class PantallaActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val buttonVolver : Button = viewBinding.buttonBack
+        buttonVolver.setOnClickListener{
+            finish()
+        }
+
     }
 }

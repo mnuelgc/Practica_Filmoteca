@@ -1,6 +1,7 @@
 package es.eps.ua.drawable
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
@@ -33,5 +34,10 @@ class PersonalizacionComponentesActivity : AppCompatActivity() {
                 grafComp.setPercentage(seekBar.progress)
             }
         })
+
+        val buttonVolver : Button = viewBinding.buttonBack
+        buttonVolver.setOnClickListener{
+            finish()
+        }
     }
 }

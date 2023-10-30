@@ -52,7 +52,10 @@ class Ejercicio3Activity : AppCompatActivity() {
                 .show()
         }
 
-
+        val buttonVolver : Button = viewBinding.buttonBack
+        buttonVolver.setOnClickListener{
+            finish()
+        }
 
     }
     fun changeColor(id: Int)

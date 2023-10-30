@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:text="Con Corrutinas"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/buttonBack"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -49,6 +49,13 @@
         android:layout_marginBottom="100dp"
         android:text="Con Thread"
         app:layout_constraintBottom_toBottomOf="@+id/button_AsyncTask"
+        app:layout_constraintStart_toStartOf="parent" />
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
 

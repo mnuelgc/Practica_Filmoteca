@@ -17,6 +17,7 @@ class EjemploHilosActivity : AppCompatActivity() {
     private lateinit var buttonThread : Button
     private lateinit var buttonAsync : Button
     private lateinit var buttonCoroutine : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityEjemploHilosBinding.inflate(layoutInflater)
@@ -56,6 +57,12 @@ class EjemploHilosActivity : AppCompatActivity() {
         buttonCoroutine.setOnClickListener {
             val intent = Intent(this@EjemploHilosActivity, HilosCorrutinasActivity::class.java)
             startActivity(intent)
+        }
+
+
+        val buttonVolver : Button = viewBinding.buttonBack
+        buttonVolver.setOnClickListener{
+            finish()
         }
     }
 }
